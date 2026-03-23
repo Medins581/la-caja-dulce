@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito | La Caja Dulce</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header-principal">
+    <div class="contenedor-logo-ovalo">
+        <a href="index.html">
+            <img src="img/LOGOSIN.png" alt="Logo" class="logo-header">
+        </a>
+    </div>
+</header>
+
+<div class="cuerpo-carrito">
+    <section class="seccion-formulario">
+        <form class="form-checkout" onsubmit="procesarPedido(event)">
+            
+            <h3>CONTACTO</h3>
+            <input type="tel" id="telefono" placeholder="TELÉFONO" class="input-gris" required>
+            
+            <h3>INFORMACIÓN DE ENVÍO</h3>
+            <select id="pais" class="input-gris">
+                <option value="España">ESPAÑA</option>
+            </select>
+            
+            <div class="fila-doble">
+                <input type="text" id="nombre" placeholder="NOMBRE" required>
+                <input type="text" id="apellido" placeholder="APELLIDO" required>
+            </div>
+            
+            <input type="text" id="direccion" placeholder="DIRECCIÓN" class="input-gris" required>
+            <input type="text" id="apartamento" placeholder="APARTAMENTO, CASA, EDIFICIO" class="input-gris">
+            
+            <div class="fila-doble">
+                <input type="text" id="ciudad" placeholder="CIUDAD" required>
+                <input type="text" id="cp" placeholder="CÓDIGO POSTAL" required>
+            </div>
+            
+            <input type="email" id="email" placeholder="CORREO ELECTRÓNICO" class="input-gris" required>
+
+            <button type="submit" class="btn-finalizar-pago">FINALIZAR PEDIDO EN WHATSAPP</button>
+
+        </form>
+    </section>
+
+    <aside class="seccion-resumen">
+        <div class="contenido-resumen">
+            
+            <div id="contenedor-productos-carrito">
+                </div>
+
+            <div class="bloque-inferior-resumen">
+                
+                <div class="fila-cupon">
+                    <input type="text" placeholder="CÓDIGO DE DESCUENTO O TARJETA REGALO" class="input-cupon">
+                    <button class="btn-aplicar">APLICAR</button>
+                </div>
+
+                <div class="precios-finales">
+                    <p id="texto-subtotal">SUB-TOTAL • 0,00€</p>
+                    <p id="texto-envio">ENVÍO • GRATIS EN VILAFRANCA</p>
+                    <h2 class="gran-total" id="texto-total">TOTAL • 0,00€</h2>
+                </div>
+
+            </div>
+        </div>
+    </aside>
+</div>
+
+<script>
+// 1. DIBUJAR EL CARRITO AL CARGAR LA PÁGINA
+window.onload = function actualizarCarrito() {
+    // Leemos la memoria
+    let carrito = JSON.parse(localStorage.getItem('carritoCajaDulce')) || [];
+    let contenedor = document.getElementById('contenedor-productos-carrito');
+    
+    // Contenedores de precios
+    let textoSubtotal = document.getElementById('texto-subtotal');
+    let textoTotal = document.getElementById('texto-total');
+    
+    contenedor.innerHTML = ''; // Limpiamos la pantalla
+    let total = 0;
+
+    if (carrito.length === 0) {
+        contenedor.innerHTML = '<p style="text-align:center; margin: 30px 0; font-family:\'Cinzel\'; font-weight:bold;">TU CARRITO ESTÁ VACÍO.</p>';
+        textoSubtotal.innerText = `SUB-TOTAL • 0,00€`;
+        textoTotal.innerText = `TOTAL • 0,00€`;
+        return; // Paramos aquí si está vacío
+    }
+
+    // Dibujamos cada producto que haya en la memoria
+    carrito.forEach((item, index) => {
+        let precioFila = item.precio * item.cantidad;
+        total += precioFila;
+
+        // Inyectamos el diseño html que tú creaste
+        contenedor.innerHTML += `
+            <div class="item-carrito" style="position: relative;">
+                <div class="cuadro-foto" style="background-color: #d6d6d6;"></div> 
+                <div class="info-producto">
+                    <p class="nombre-producto">${item.cantidad}x ${item.nombre}</p>
+                    <span class="precio-producto">${precioFila.toFixed(2)}€</span>
+                    <span onclick="borrarProducto(${index})" style="position:absolute; right:0; top:10px; font-size:10px; color:red; cursor:pointer; text-decoration:underline;">Quitar</span>
+                </div>
+            </div>
+        `;
+    });
+
+    // Actualizamos los textos de los precios totales
+    textoSubtotal.innerText = `SUB-TOTAL • ${total.toFixed(2)}€`;
+    textoTotal.innerText = `TOTAL • ${total.toFixed(2)}€`;
+}
+
+// 2. FUNCIÓN PARA BORRAR UN PRODUCTO (La llama el botoncito "Quitar")
+function borrarProducto(index) {
+    let carrito = JSON.parse(localStorage.getItem('carritoCajaDulce')) || [];
+    carrito.splice(index, 1);
+    localStorage.setItem('carritoCajaDulce', JSON.stringify(carrito));
+    window.onload(); // Recargamos el carrito
+}
+
+// 3. ENVIAR TODO A WHATSAPP
+function procesarPedido(event) {
+    event.preventDefault();
+
+    try {
+        let carrito = JSON.parse(localStorage.getItem('carritoCajaDulce')) || [];
+        
+        if (carrito.length === 0) {
+            alert("Tu carrito está vacío. ¡Añade algún pan primero antes de finalizar el pedido!");
+            return;
+        }
+
+        // Recoger datos del cliente
+        const nombre = document.getElementById('nombre').value;
+        const apellido = document.getElementById('apellido').value;
+        const telefono = document.getElementById('telefono').value;
+        const direccion = document.getElementById('direccion').value;
+        const ciudad = document.getElementById('ciudad').value;
+        const apartamento = document.getElementById('apartamento').value;
+        
+        // Recoger productos directamente de la memoria (¡Es más seguro que leer la pantalla!)
+        let productosTexto = "";
+        let totalFinal = 0;
+        
+        carrito.forEach((item) => {
+            let precioFila = item.precio * item.cantidad;
+            productosTexto += `• ${item.cantidad}x ${item.nombre} - ${precioFila.toFixed(2)}€\n`;
+            totalFinal += precioFila;
+        });
+
+        const idPedido = Math.floor(Math.random() * 9000) + 1000;
+
+        // CREAR EL MENSAJE
+        let mensaje = `👋 *HOLA! NUEVO PEDIDO #${idPedido}*\n`;
+        mensaje += `--------------------------------\n`;
+        mensaje += `👤 *Cliente:* ${nombre} ${apellido}\n`;
+        mensaje += `📞 *Tel:* ${telefono}\n`;
+        mensaje += `📍 *Dirección:* ${direccion}, ${apartamento}, ${ciudad}\n`;
+        mensaje += `--------------------------------\n`;
+        mensaje += `🥖 *PEDIDO:*\n${productosTexto}`;
+        mensaje += `--------------------------------\n`;
+        mensaje += `💰 *TOTAL: ${totalFinal.toFixed(2)}€*\n`;
+        mensaje += `--------------------------------\n`;
+        mensaje += `ℹ️ *Espero confirmación para pago y entrega.*`;
+
+        // ABRIR WHATSAPP
+        const miNumero = "34694261472"; // He mantenido el número que pusiste en tu código
+        const url = `https://wa.me/${miNumero}?text=${encodeURIComponent(mensaje)}`;
+        
+        // Vaciamos el carrito porque ya ha hecho el pedido
+        localStorage.removeItem('carritoCajaDulce');
+        
+        // Mandamos al cliente a WhatsApp
+        window.location.href = url;
+
+    } catch (error) {
+        alert("Hubo un error al crear el pedido: " + error.message);
+        console.error(error);
+    }
+}
+</script>
+</body>
+</html>
