@@ -10,24 +10,66 @@
 </head>
 <body>
 
-    <header>
-        <div class="contenedor-iconos iconos-productos">
-            <a href="../Inicio.html" class="contenedor-iconos">
-                <img src="../img/home.png" alt="Inicio" class="icono">
-            </a>
-            <a href="../carrito.html" class="contenedor-iconos">
-                <img src="../img/shopping-cart1.png" alt="Ir Al Carrito" class="icono">
-            </a>
-            <a href="#" class="contenedor-iconos">
-                <img src="../img/lupita.png" alt="Buscar" class="icono">
-            </a>
-        </div>
-        <div class="logo-box">
-            <div class="contenedor-botones">
-                <a href="../productos.html" class="boton-nav">PRODUCTOS</a>
-                <a href="../SobreNosotros.html" class="boton-nav">SOBRE NOSOTROS</a>
+    <header class="site-header capsule-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="menuBtn" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-links desktop-only">
+                    <a href="../productos.html" class="boton-nav">PRODUCTOS</a>
+                    <a href="../SobreNosotros.html" class="boton-nav">SOBRE NOSOTROS</a>
+                </nav>
             </div>
-            <img src="../img/LOGOSIN.png" alt="La Caja Dulce" class="main-logo">
+
+            <div class="header-center">
+                <a href="../index.html" class="logo-link">
+                    <div class="logo-box">
+                        <img src="../img/LOGOSIN.png" alt="La Caja Dulce" class="main-logo">
+                    </div>
+                </a>
+            </div>
+
+            <div class="header-right">
+                <div class="header-icons">
+                    <a href="../index.html" class="icon-link">
+                        <img src="../img/home.png" alt="Inicio" class="icono">
+                    </a>
+                    <a href="../carrito.html" class="icon-link">
+                        <img src="../img/shopping-cart1.png" alt="Carrito" class="icono">
+                    </a>
+                    <a href="#" class="icon-link">
+                        <img src="../img/lupita.png" alt="Buscar" class="icono">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <button class="close-menu-btn" id="closeMenuBtn" aria-label="Cerrar menú">&times;</button>
+            <div class="mobile-nav-header">
+                <div class="logo-circle-small">
+                    <img src="../img/LOGOSIN.png" alt="Logo">
+                </div>
+            </div>
+            <nav class="mobile-links">
+                <a href="../index.html">INICIO</a>
+                <a href="../productos.html">PRODUCTOS</a>
+                <a href="../SobreNosotros.html">SOBRE NOSOTROS</a>
+                <a href="../club-del-pan.html">EL CLUB DEL PAN</a>
+                <a href="../carrito.html">MI CARRITO</a>
+            </nav>
+            <div class="mobile-nav-footer">
+                <p>La Caja Dulce</p>
+                <div class="mobile-socials">
+                    <!-- Placeholder for social icons if needed -->
+                </div>
+            </div>
         </div>
     </header>
 
@@ -135,23 +177,34 @@
 
     </main>
 
-    <footer>
-        <div class="footer-info">
-            <p><img src="../img/envelope-plus.png" alt="Email" class="footer-icon"> PRUEBA@GMAIL.COM</p>
-            <p><img src="../img/phone-call.png" alt="Teléfono" class="footer-icon"> 696855416</p>
-            <p><img src="../img/land-layer-location.png" alt="Ubicación" class="footer-icon"> 08720 VILAFRANCA DEL PENEDÈS | BARCELONA</p>
-        </div>
-        <div class="footer-newsletter">
-            <h4>EL AROMA EMPIEZA AQUÍ.</h4>
-            <p>Déjanos tu email y consigue un 10% de descuento en tu primer mes de suscripción al Club del Pan.</p>
-            <div class="input-group">
-                <input type="email" placeholder="ESCRIBE TU EMAIL">
-                <button class="btn-suscribir">SUSCRIBIRSE</button>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>CONTACTO</h4>
+                <p><img src="../img/envelope-plus.png" alt="Email" class="footer-icon">
+                PRUEBA@GMAIL.COM</p>
+                <p><img src="../img/phone-call.png" alt="Teléfono" class="footer-icon">
+                696855416</p>
+                <p><img src="../img/land-layer-location.png" alt="Ubicación" class="footer-icon">
+                08720 VILAFRANCA DEL PENEDÈS | BARCELONA</p>
+                
             </div>
-        </div>
-        <div class="footer-logo">
-            <div class="logo-circle">
-            <img src="../img/LOGOSIN.png" alt="Small Logo">
+
+            <div class="footer-newsletter">
+                <h4>EL AROMA EMPIEZA AQUÍ.</h4>
+                <p>Déjanos tu email y consigue un 10% de descuento en tu primer mes de suscripción al Club del Pan.</p>
+                <div class="input-group">
+                    <input type="email" placeholder="ESCRIBE TU EMAIL">
+                    <button class="btn-suscribir">SUSCRIBIRSE</button>
+                </div>
+            </div>
+
+            <div class="footer-logo">
+                <div class="logo-circle">
+                    <img src="../img/LOGOSIN.png" alt="Small Logo">
+                </div>
+                <p class="copyright">&copy; 2026 LA CAJA DULCE. TODOS LOS DERECHOS RESERVADOS.</p>
+            </div>
         </div>
     </footer>
     
@@ -212,6 +265,31 @@
             document.getElementById(idPestana).classList.add('activo');
             evento.currentTarget.classList.add('active');
         }
+        // Menú móvil toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            if (menuBtn) menuBtn.classList.toggle('active');
+            if (mobileNav) mobileNav.classList.toggle('active');
+            if (menuOverlay) menuOverlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        }
+
+        if (menuBtn && mobileNav && menuOverlay) {
+            menuBtn.addEventListener('click', toggleMenu);
+            menuOverlay.addEventListener('click', toggleMenu);
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        // Cerrar menú al volver a PC
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992 && mobileNav && mobileNav.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
     </script>
 </body>
 </html>

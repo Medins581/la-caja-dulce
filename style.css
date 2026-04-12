@@ -7,162 +7,497 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
-body, h1, h2, .boton-nav {
+body,
+h1,
+h2,
+.boton-nav {
     font-family: 'Cinzel', serif;
-}   
+}
+
+* {
+    box-sizing: border-box;
+}
 
 body {
     background-color: var(--cream);
     color: var(--brown);
-    font-family: 'Arial', sans-serif; /* Cambia a la fuente de tu Figma */
+    font-family: 'Arial', sans-serif;
     margin: 0;
     text-align: center;
+    overflow-x: hidden;
 }
 
-/* Header */
-header {
-background-color: #553922;
-  width: 100%; 
-  height: 130px;
-display: flex;            /* Activa el modo caja flexible */
-  justify-content: center;   /* Centra horizontalmente el óvalo */
-  align-items: center;       /* Centra verticalmente el óvalo */
-   margin-top: 10px;
-  margin-left: 5px;
-  width: calc(100% - 5px);
-  border-sizing: border-box; /* Asegura que el padding y borde no aumenten el ancho total */
-  /* Ajusta estos valores para lograr la curva exacta de tu imagen */
-  border-radius: 100px / 100px;               /* Asegúrate de que ocupe todo el ancho */
-  /* Aquí va tu border-radius y margin-top que ya pusimos */    
+/* Base Header Styles (Legacy/Standard) */
+.site-header {
+    background-color: #553922;
+    color: #F8F5E1;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.contenedor-iconos {
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
-    gap: 100px;
-    position: relative; /* Para posicionar los íconos sobre el header */
-    top: -18px; /* Ajusta según sea necesario */
-    right: -38%; /* Ajusta según sea necesario */
-    margin-top: 35px;
-
-}
-.icono {
-  width: 36px;  /* Ajusta el tamaño para que se vea como en tu imagen */
-  height: auto;
-  cursor: pointer;
-}
-.contenedor-botones {
-  position: absolute;
-  left: -550px;           /* Los separa del borde izquierdo del header */
-  display: flex;
-  gap: 120px;          /* Espacio entre los dos botones */
-  top: 50%;
-  transform: translateY(-50%);
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
 }
 
-.iconos-productos {
+/* Scoped Capsule Header (for index.html) */
+.site-header.capsule-header {
+    background-color: transparent;
+    top: 20px;
+    /* More space from top */
+    padding: 10px 0;
+    box-shadow: none;
+}
+
+.site-header.capsule-header .header-container {
+    width: 94%;
+    max-width: 1500px;
+    background-color: #553922;
+    border-radius: 120px;
+    /* Smoother rounding */
+    height: 110px;
+    /* Significantly taller */
+    padding: 0 30px 0 60px;
+    /* Reduced right padding from 60px to 30px to move right content */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.site-header.capsule-header .header-right {
+    padding-right: 0;
+    /* Remove extra padding to move icons as far right as possible */
+}
+
+.site-header.capsule-header .logo-box {
+    background-color: #F2F1E4;
+    border: 3px solid #6b5a41;
+    border-radius: 100px;
+    /* Beautiful oval restored */
+    width: 200px;
+    height: 100%;
+    /* Contained exactly within the bar */
+    top: 0;
+    margin: 0 30px;
+    box-shadow: none;
     display: flex;
-    gap: 100px;
-    position: relative; /* Para posicionar los íconos sobre el header */
-    top: -20px; /* Ajusta según sea necesario */
-    right: -30.2%; /* Ajusta según sea necesario */
-    margin-top: 35px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
 
+.site-header.capsule-header .main-logo {
+    width: 170px;
+    /* Larger logo */
+}
+
+.site-header.capsule-header .boton-nav {
+    padding: 15px 40px;
+    border-radius: 40px;
+    font-size: 14px;
+    margin: 0 10px;
+    letter-spacing: 2px;
+}
+
+.site-header.capsule-header .icono {
+    width: 32px;
+    /* Larger icons */
+    height: 32px;
+}
+
+.site-header.capsule-header .icon-link {
+    margin: 0 15px;
+}
+
+/* Media Query for Mobile Capsule Header - Final Stability Fix */
+@media (max-width: 992px) {
+    .site-header.capsule-header {
+        top: 0;
+        padding: 0;
+    }
+
+    .site-header.capsule-header .header-container {
+        width: 100%;
+        max-width: none;
+        border-radius: 0;
+        height: 70px;
+        padding: 0 15px;
+        /* Balanced padding */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        /* Essential for absolute logo */
+        overflow: visible !important;
+    }
+
+    .site-header.capsule-header .header-left {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        z-index: 10;
+        min-width: 40px;
+    }
+
+    .site-header.capsule-header .header-right {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        z-index: 10;
+        min-width: 100px;
+        padding-right: 8px;
+        /* Further reduced from 15px to move right */
+        /* Slightly shifted to the left */
+    }
+
+    .site-header.capsule-header .header-center {
+        position: absolute;
+        left: 50%;
+        /* Perfect center */
+        /* Slightly shifted to the left for visual balance */
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 90px;
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 5;
+    }
+
+    .site-header.capsule-header .logo-box {
+        width: 100px;
+        height: 100px;
+        background-color: #F8F5E1;
+        border: 2px solid #6b5a41;
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        position: relative;
+        top: 15px;
+        /* Reverted to 15px */
+    }
+
+    .site-header.capsule-header .main-logo {
+        width: 100px;
+        /* Fully fills the 100px circle container */
+        height: auto;
+    }
+
+    .site-header.capsule-header .mobile-menu-btn {
+        display: flex !important;
+    }
+
+    .site-header.capsule-header .header-icons {
+        display: flex;
+        gap: 20px;
+        /* Increased separation */
+    }
+
+    .site-header.capsule-header .icono {
+        width: 22px;
+        /* Smaller to fit all 3 on tiny screens */
+        height: 22px;
+    }
+
+    .site-header.capsule-header .icon-link {
+        margin: 0;
+    }
+}
+
+.header-left,
+.header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+    justify-content: flex-end;
+}
+
+.header-center {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Nav Links Desktop */
+.nav-links {
+    display: flex;
+    gap: 15px;
 }
 
 .boton-nav {
-  background-color: #F8F5E1; /* Color crema igual al óvalo central */
-  color: #5D4037;           /* Texto marrón oscuro */
-  border: none;
-  padding: 8px 20px;        /* Les da esa forma de "pastilla" */
-  border-radius: 20px;      /* Bordes muy redondeados como en tu imagen */
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  text-transform: uppercase;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Pequeña sombra para que resalten */
-  text-decoration: none; /* Quita la raya de abajo */
-    color: inherit;        /* Mantiene el color que ya tenías */
-    display: inline-block; /* Permite que el margen y padding funcionen igual */
-    cursor: pointer;
+    background-color: #F8F5E1;
+    color: #553922;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
 }
 
 .boton-nav:hover {
-  background-color: #e5e2cd; /* Se oscurece un poco al pasar el ratón */
+    background-color: #e5e2cd;
+    transform: translateY(-2px);
 }
 
-.btn-nav {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid var(--white);
-    color: var(--white);
-    padding: 5px 15px;
-    border-radius: 20px;
-    margin-right: 10px;
-    font-size: 10px;
-    cursor: pointer;
-}
-
+/* Legacy Logo Box */
 .logo-box {
-    background-color: #F2F1E4; /* El color crema/blanco del centro */
-  border: 2px solid #6b5a41; /* El borde fino que se ve en la imagen */
-  
-  /* ESTA ES LA PARTE IMPORTANTE */
-  border-radius: 150px;      /* Hace que los bordes sean redondos */
-  
-  padding: 0rem 2rem;        /* Espacio interno para dar forma de óvalo */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;  
-  position: relative; left: -80px;
-  
-  /* Ajusta el ancho del contenedor para que sea responsivo */
-  width: 40%;
-  height: 100%;                 /* deja que el contenido determine el ancho */
-  max-width: 4vw;             /* no crece más de 20% del ancho de la ventana */
-  min-width: 150px;   
-  margin-left: 5%;  
-  left: -12%;       /* tamaño mínimo razonable */
+    background-color: #F2F1E4;
+    border: 2px solid #6b5a41;
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 1001;
 }
 
-/* El logo dentro de la caja siempre se ajusta */
 .main-logo {
-    max-width: 130%;          /* nunca salga de su contenedor */
-    max-height: 150%;         /* tampoco crezca más que la caja */
-    height: auto;             /* mantiene proporción */
-    width: 200px;
+    width: 120px;
+    height: auto;
     display: block;
-    margin-top: 15px;
-    
+}
+
+/* Icons */
+.header-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.icon-link:hover {
+    transform: scale(1.1);
+}
+
+.icono {
+    width: 28px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    /* Make icons white */
+}
+
+/* Hamburger Menu Button */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+}
+
+.mobile-menu-btn span {
+    width: 100%;
+    height: 3px;
+    background-color: #F8F5E1;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile Nav Overlay Refined */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    /* More standard width */
+    height: 100vh;
+    background-color: #553922;
+    z-index: 1001;
+    /* Above overlay */
+    padding: 0;
+    transition: left 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav.active {
+    left: 0;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-header {
+    padding: 40px 20px;
+    background-color: #4a321f;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(248, 245, 225, 0.1);
+}
+
+.logo-circle-small {
+    width: 150px;
+    height: 150px;
+    background-color: #F8F5E1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #6b5a41;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.logo-circle-small img {
+    width: 120px;
+}
+
+.mobile-links {
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.mobile-links a {
+    color: #F8F5E1;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(248, 245, 225, 0.05);
+    transition: all 0.3s ease;
+}
+
+.mobile-links a:hover {
+    padding-left: 10px;
+    color: #f2ead0;
+}
+
+.mobile-nav-footer {
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid rgba(248, 245, 225, 0.1);
+}
+
+.mobile-nav-footer p {
+    color: #F8F5E1;
+    opacity: 0.6;
+    font-size: 12px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Responsive Utilities */
+@media (max-width: 992px) {
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .header-left {
+        flex: 1;
+    }
 }
 
 
 
-.header-icons { color: white; font-size: 20px; }
+.header-icons {
+    color: white;
+    font-size: 20px;
+}
 
 
 /* Beneficios */
 .benefits {
     display: flex;
     justify-content: space-around;
-    padding: 40px 10%;
+    padding: 60px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-.item-benefits{
+.item-benefits {
     display: flex;
-  flex-direction: column;        /* Apila imagen -> título -> texto */
-  align-items: center;           /* Centra todo horizontalmente */
-  flex: 1;
+    flex-direction: column;
+    /* Apila imagen -> título -> texto */
+    align-items: center;
+    /* Centra todo horizontalmente */
+    flex: 1;
 }
 
 .icon-benefit {
-    width: 50px;                   /* Ajusta el tamaño que prefieras */
-  height: 50px;                  /* Mantén el mismo alto para uniformidad */
-  object-fit: contain;           /* Evita que la imagen se deforme si no es cuadrada */
-  margin-bottom: 15px;
+    width: 50px;
+    /* Ajusta el tamaño que prefieras */
+    height: 50px;
+    /* Mantén el mismo alto para uniformidad */
+    object-fit: contain;
+    /* Evita que la imagen se deforme si no es cuadrada */
+    margin-bottom: 15px;
 }
 
-.benefit h3 { font-size: 14px; margin: 10px 0; }
-.benefit p { font-size: 10px; opacity: 0.8; }
+.benefit h3 {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.benefit p {
+    font-size: 10px;
+    opacity: 0.8;
+}
 
 /* Grid de Imágenes */
 .main-content {
@@ -181,8 +516,9 @@ display: flex;            /* Activa el modo caja flexible */
     align-items: center;
     justify-content: center;
     color: #FEFAE0;
-    position: relative; /* ¡ESTA ES LA CLAVE! Mantiene el velo "preso" dentro de la caja */
-  overflow: hidden;
+    position: relative;
+    /* ¡ESTA ES LA CLAVE! Mantiene el velo "preso" dentro de la caja */
+    overflow: hidden;
 }
 
 .banner-vertical h2 {
@@ -194,15 +530,21 @@ display: flex;            /* Activa el modo caja flexible */
 
 .banner-vertical::before {
     content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0); /* Invisible al principio */
-  transition: 0.3s;
-  z-index: 1;}
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    /* Invisible al principio */
+    transition: 0.3s;
+    z-index: 1;
+}
 
-  .banner-vertical:hover::before{
-    background-color: rgba(0, 0, 0, 0.5); /* Se oscurece al pasar el mouse */
-  }
+.banner-vertical:hover::before {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Se oscurece al pasar el mouse */
+}
 
 .right-column {
     flex: 3;
@@ -221,21 +563,27 @@ display: flex;            /* Activa el modo caja flexible */
     color: #FEFAE0;
     font-size: 25px;
     background-image: url("img/Dark\ and\ Moody\ Croissants\ by\ ful-filled.jpg");
-    position: relative; /* ¡ESTA ES LA CLAVE! Mantiene el velo "preso" dentro de la caja */
-  overflow: hidden;
+    position: relative;
+    /* ¡ESTA ES LA CLAVE! Mantiene el velo "preso" dentro de la caja */
+    overflow: hidden;
 }
 
-.banner-horizontal::before{
+.banner-horizontal::before {
     content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0); /* Invisible al principio */
-  transition: 0.3s;
-  z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    /* Invisible al principio */
+    transition: 0.3s;
+    z-index: 1;
 }
 
-.banner-horizontal:hover::before{
-    background-color: rgba(0, 0, 0, 0.5); /* Se oscurece al pasar el mouse */
+.banner-horizontal:hover::before {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Se oscurece al pasar el mouse */
 }
 
 .banner-horizontal.best-sellers {
@@ -260,12 +608,14 @@ display: flex;            /* Activa el modo caja flexible */
     gap: 40px;
     max-width: 1000px;
     margin: 0 auto;
-    flex-wrap: wrap; /* Permite que se adapte bien en móviles */
+    flex-wrap: wrap;
+    /* Permite que se adapte bien en móviles */
 }
 
 .paso {
     flex: 1;
-    min-width: 200px; /* Evita que queden muy estrechos en pantallas pequeñas */
+    min-width: 200px;
+    /* Evita que queden muy estrechos en pantallas pequeñas */
 }
 
 .paso h3 {
@@ -321,157 +671,205 @@ display: flex;            /* Activa el modo caja flexible */
     color: inherit;
 }
 
-/* Footer */
-footer {
-    background-color: #553922; /* Tu marrón */
-    display: flex;
-    align-items: center;       /* Centra todo verticalmente */
-    justify-content: center;   /* Centra el bloque entero */
-    padding: 60px 0;           /* Espacio arriba y abajo */
+/* Footer Modern Design */
+.site-footer {
+    background-color: #553922;
+    color: #F8F5E1;
+    padding: 80px 0 40px;
+    font-family: 'Cinzel', serif;
     width: 100%;
-    position: relative  ;
 }
 
-.footer-info p, 
-.footer-info span,
-.footer-info div
-.footer-newsletter h4,
-.footer-newsletter p {
-    font-family: 'Cinzel', serif !important;
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 0 5%;
 }
 
-.testimonials{
-    font-family: 'Cinzel', serif !important;
-}
-
-.footer-info {
-    flex: 1;                   /* Ocupa 1 parte del espacio */
-    padding: 0 40px;
-    text-align: left;
-}
-
-.footer-newsletter { width: 40%;
-flex: 1.5;                 /* Es un poco más ancho que los lados */
-    padding: 0 60px;           /* Espacio para que el texto no pegue a las líneas */
-    border-left: 1px solid #FEFAE0;  /* Línea beige izquierda */
-    border-right: 1px solid #FEFAE0; /* Línea beige derecha */
-    text-align: center; }
-
+.footer-info,
+.footer-newsletter,
 .footer-logo {
     flex: 1;
-    display: flex;
-    justify-content: flex-end; /* Centra el círculo en su columna */
-    align-items: center;
-    padding-right: 40px;
 }
 
-.logo-circle {
-    background-color: #F8F5E1; /* El color beige claro de tu marca */
-    padding: 15px;             /* Espacio alrededor del logo */
-    border-radius: 50px;       /* Lo hace ovalado/circular */
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* La sombra suave que se ve en la foto */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #6B4F3B; /* Un borde sutil para definir el círculo */
-    transform: translateY(-40px); /* Lo sube ligeramente */
-}
-
-
-.footer-icon {
-    width: 20px;         /* Ajusta el tamaño según necesites */
-    height: auto;
-    /* Si tus iconos son negros y los quieres claros, puedes usar filter: invert(1); */
-}
-
-.logo-circle img {
-    width: 90px;               /* Ajusta el tamaño de tu logo */
-    height: auto;
-}
-
-.footer-logo img {
-   width: 100px; /* Ajusta el tamaño del logo en el footer */
-}
-
-
-.footer-info p {
-    display: flex;
-    align-items: center; /* Centra el icono verticalmente con el texto */
-    gap: 15px;           /* Espacio entre el icono y el texto */
-    margin-bottom: 20px; /* Espacio entre cada línea de contacto */
-    color: #F8F5E1;      /* Tu color beige */
-    font-size: 14px;
-}
-
-
+.footer-info h4,
 .footer-newsletter h4 {
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-    color: #FEFAE0;
-}
-
-.footer-newsletter p {
-    font-size: 12px;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
     margin-bottom: 25px;
     color: #FEFAE0;
 }
 
-.input-group {
+.footer-info p {
     display: flex;
-    max-width: 400px;          /* Limita el ancho del buscador */
-    margin: 0 auto;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    flex-wrap: wrap;
+    /* Permite que el texto largo se rompa en móvil */
 }
 
-.input-group input {
-    flex: 1;                   /* El cuadro de texto se estira */
-    background-color: #8D766B; /* Gris/marrón como en tu imagen */
-    border: 2px solid #FEFAE0; /* Borde beige */
-    padding: 12px;
+.footer-icon {
+    width: 18px;
+    height: auto;
+    opacity: 0.9;
 }
 
-.input-group input::placeholder {
-    color: #F8F5E1; /* El color beige de tus líneas y logo */
-    opacity: 0.8;   /* Un poco de transparencia para que parezca un susurro */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
 }
 
-.input-group input::-webkit-input-placeholder { color: #F8F5E1; }   
-.input-group input::-moz-placeholder { color: #F8F5E1; }
-.input-group input:-ms-input-placeholder { color: #F8F5E1; }
+.social-icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(248, 245, 225, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
 
-.btn-suscribir {
-    background-color: #FEFAE0; /* El botón beige clarito */
-    color: #5D4037;
+.social-icon:hover {
+    background: rgba(248, 245, 225, 0.2);
+    transform: translateY(-3px);
+}
+
+.social-icon img {
+    width: 18px;
+    height: 18px;
+}
+
+.footer-newsletter p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    opacity: 0.8;
+}
+
+.footer-newsletter .input-group {
+    display: flex;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(248, 245, 225, 0.3);
+    border-radius: 30px;
+    overflow: hidden;
+    padding: 5px;
+    max-width: 100%;
+    /* Ajuste para móviles */
+    width: 100%;
+}
+
+.footer-newsletter .input-group input {
+    flex: 1;
+    background: transparent;
+    border: none !important;
+    padding: 0 25px;
+    color: #F8F5E1;
+    font-family: inherit;
+    font-size: 16px;
+    /* Optimized for mobile to prevent auto-zoom */
+    min-height: 50px;
+    transition: all 0.3s ease;
+}
+
+.footer-newsletter .input-group input::placeholder {
+    color: rgba(248, 245, 225, 0.5);
+}
+
+.footer-newsletter .input-group input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-newsletter .btn-suscribir {
+    background: #F8F5E1;
+    color: #553922;
     border: none;
     padding: 0 20px;
+    border-radius: 25px;
+    font-family: 'Cinzel', serif;
     font-weight: bold;
+    font-size: 0.8rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer-newsletter .btn-suscribir:hover {
+    background: #FEFAE0;
+    transform: scale(1.02);
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo-circle {
+    background-color: #F8F5E1;
+    width: 160px;
+    /* Increased from 110px */
+    height: 160px;
+    /* Increased from 110px */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    border: 2px solid #FEFAE0;
+}
+
+.logo-circle img {
+    width: 120px;
+    /* Increased from 80px */
+    height: auto;
+}
+
+.copyright {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: auto;
 }
 
 /* Página de Productos */
 
 .contenedor-productos-main {
     display: flex;
-    max-width: 1500px;
-    /* 0 arriba, auto a los lados, y 150px abajo para crear el hueco beige */
-    margin: 0 auto 150px auto !important; 
+    justify-content: center;
+    /* Centers the content (sidebar + grid) */
+    width: 100%;
+    margin: 0 0 150px 0 !important;
     gap: 30px;
-    padding: 40px 20px;
+    padding: 90px 8%;
+    /* Increased side padding */
     background-color: #553922;
-    min-height: 60vh;
+    min-height: 500px;
     color: #FEFAE0;
 }
 
 
 /* 1. TÍTULO Y RAYA */
 .titulo-seccion {
-   display: block;
+    display: block;
     font-family: 'Cinzel', serif;
     font-size: 3rem;
     color: #553922;
     margin-top: 80px;
     margin-bottom: 0 !important;
-    margin-left: 2%;              /* Alineación fija y segura */
+    margin-left: 2%;
+    /* Alineación fija y segura */
     padding-bottom: 40px;
     position: relative;
     width: fit-content;
@@ -482,20 +880,15 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
     content: "";
     position: absolute;
     bottom: 25px;
-    left: 0;                      /* Empieza justo debajo de la P */
-    width: 100%;                  /* Subraya todo el ancho del texto */
+    left: 0;
+    /* Empieza justo debajo de la P */
+    width: 100%;
+    /* Subraya todo el ancho del texto */
     height: 5%;
     background-color: #553922;
 }
 
 
-/* Contenedor de la barra */
-.barra-categorias-productos {
-    background-color: #553922; /* Fondo marrón */
-    padding: 15px 20px;       /* Un poco de espacio alrededor */
-    display: flex;
-    gap: 15px;                /* Espacio entre botones */
-}
 
 /* Estilo de cada botón individual */
 .btn-categoria {
@@ -514,28 +907,21 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
 
 .barra-categorias-productos {
     background-color: #553922;
-    padding: 15px 40px;
+    padding: 15px 8%;
+    /* Increased side padding */
     display: flex;
+    justify-content: center;
+    /* Centers the category buttons */
     gap: 15px;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
+    width: 100%;
 }
 
-/* Para que "FILTRAR" esté justo debajo */
-.contenedor-productos-main {
-    display: flex;
-    max-width: 1200px;
-    /* IMPORTANTE: margen inferior de 150px para crear el hueco beige */
-    margin: 0 auto 150px auto !important; 
-    gap: 30px;
-    padding: 90px 170px;
-    background-color: #553922;
-    min-height: 500px;
-    color: #FEFAE0;
-}
 
 .btn-categoria:hover {
-    transform: scale(1.05);   /* Pequeño efecto al pasar el ratón */
+    transform: scale(1.05);
+    /* Pequeño efecto al pasar el ratón */
     background-color: #f2ead0;
 }
 
@@ -543,14 +929,18 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
 
 /* Estilos del Filtro Lateral */
 .filtros-lateral {
-    width: 350px;             /* Aumentamos de 250px a 350px */
-    flex-shrink: 0;           /* Evita que se encoja si la pantalla es pequeña */
-    padding-right: 100px;      /* Separación con los productos */
-    margin-left: -140px;
+    width: 350px;
+    /* Aumentamos de 250px a 350px */
+    flex-shrink: 0;
+    /* Evita que se encoja si la pantalla es pequeña */
+    padding-right: 100px;
+    /* Separación con los productos */
+    margin-left: 0;
 }
 
 .filtros-lateral h2 {
-    font-size: 3rem;          /* Título "FILTRAR" más imponente */
+    font-size: 3rem;
+    /* Título "FILTRAR" más imponente */
     margin-bottom: 20px;
     letter-spacing: 2px;
     padding-top: -100px;
@@ -566,12 +956,14 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
 }
 
 .categoria-filtro span {
-    font-size: 1.2rem;        /* Texto de PAN, BOLLERÍA, etc. más grande */
+    font-size: 1.2rem;
+    /* Texto de PAN, BOLLERÍA, etc. más grande */
     font-family: 'Cinzel', serif;
 }
 
 .plus {
-    font-size: 1.5rem;        /* El icono + más visible */
+    font-size: 1.5rem;
+    /* El icono + más visible */
 }
 
 .btn-precios {
@@ -581,7 +973,8 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
 
 .slider-wrapper {
     position: relative;
-    width: 100%;       /* Ocupa todo el ancho del filtro (350px) */
+    width: 100%;
+    /* Ocupa todo el ancho del filtro (350px) */
     height: 40px;
     margin-top: 10px;
     display: flex;
@@ -594,22 +987,26 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
     position: absolute;
     width: 100%;
     height: 4px;
-    background-color: #FEFAE0; 
+    background-color: #FEFAE0;
     opacity: 0.3;
     border-radius: 10px;
-    z-index: 1; /* Al fondo */
+    z-index: 1;
+    /* Al fondo */
 }
 
 
 .input-range {
     position: absolute;
-    width: 100%;      /* IMPORTANTE: que cubra toda la línea */
-    left: 0;          /* Forzamos que empiece en el borde izquierdo */
+    width: 100%;
+    /* IMPORTANTE: que cubra toda la línea */
+    left: 0;
+    /* Forzamos que empiece en el borde izquierdo */
     appearance: none;
     background: none;
     pointer-events: none;
     margin: 0;
-    z-index: 2; /* Por delante de la línea */
+    z-index: 2;
+    /* Por delante de la línea */
 }
 
 /* El circulito (Thumb) */
@@ -620,7 +1017,8 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
     border-radius: 50%;
     background: #FEFAE0;
     cursor: pointer;
-    pointer-events: auto; /* Permite arrastrar el círculo */
+    pointer-events: auto;
+    /* Permite arrastrar el círculo */
     border: 2px solid #553922;
     position: relative;
     z-index: 3;
@@ -641,8 +1039,10 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
 }
 
 .linea-rango {
-    width: 100%;             /* Se adapta al nuevo ancho de 350px */
-    height: 3px;             /* Un pelín más gruesa */
+    width: 100%;
+    /* Se adapta al nuevo ancho de 350px */
+    height: 3px;
+    /* Un pelín más gruesa */
     background-color: #FEFAE0;
     margin: 15px 0;
 }
@@ -650,7 +1050,8 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
 /* Estilos del Grid de Productos */
 .grid-articulos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas como en tu foto */
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columnas como en tu foto */
     gap: 30px;
     flex-grow: 1;
 }
@@ -661,8 +1062,10 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
 }
 
 .imagen-placeholder {
-    position: relative; /* Clave para que el botón se coloque encima de la foto */
-    height: 250px; /* Asegúrate de mantener la altura de tus fotos */
+    position: relative;
+    /* Clave para que el botón se coloque encima de la foto */
+    height: 250px;
+    /* Asegúrate de mantener la altura de tus fotos */
     background-color: #d6d6d6;
 }
 
@@ -676,46 +1079,56 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
 
 .grid-articulos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 25px;            /* Espacio más pequeño entre cajas */
-    flex: 2;              /* Le quita un poco de peso visual */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    /* Espacio más pequeño entre cajas */
+    flex: 2;
+    /* Le quita un poco de peso visual */
 }
 
 .imagen-placeholder {
     background-color: #D9D9D9;
-    aspect-ratio: 1 / 1.1; /* Proporción un poco más cuadrada */
-    width: 100%;           
-    max-width: 220px;      /* Limitamos el ancho máximo de cada foto */
-    margin: 0 auto;        /* Centra la foto en su columna */
+    aspect-ratio: 1 / 1.1;
+    /* Proporción un poco más cuadrada */
+    width: 100%;
+    max-width: 220px;
+    /* Limitamos el ancho máximo de cada foto */
+    margin: 0 auto;
+    /* Centra la foto en su columna */
 }
 
 
 /* Efecto al pasar el ratón por encima */
 .tarjeta-producto-link:hover .imagen-placeholder {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .btn-add-cart {
-    background-color: #553922; /* Tu color Marrón */
+    background-color: #553922;
+    /* Tu color Marrón */
     border: none;
-    border-radius: 50%; /* Lo hacemos redondito */
+    border-radius: 50%;
+    /* Lo hacemos redondito */
     width: 40px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     position: absolute;
-    bottom: 15px; /* Separación desde abajo */
-    right: 15px;  /* Separación desde la derecha */
+    bottom: 15px;
+    /* Separación desde abajo */
+    right: 15px;
+    /* Separación desde la derecha */
     transition: transform 0.2s ease, background-color 0.2s ease;
     z-index: 10;
 }
 
 .btn-add-cart img {
-    width: 20px; /* Ajusta el tamaño del icono de tu carrito */
+    width: 20px;
+    /* Ajusta el tamaño del icono de tu carrito */
     height: auto;
 }
 
@@ -723,26 +1136,37 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
    NOTIFICACIÓN FLOTANTE (TOAST)
 ========================================= */
 #toast-carrito {
-    visibility: hidden; /* Oculto por defecto */
-    min-width: 250px; /* Ancho mínimo */
-    background-color: #553922; /* Tu marrón corporativo */
-    color: #fdfbf7; /* Letra clara */
-    text-align: center; 
-    border-radius: 8px; /* Bordes redondeados */
-    padding: 16px; /* Espacio interior */
-    position: fixed; /* Se queda fijo aunque hagas scroll */
-    z-index: 9999; /* Por encima de TODO en la web */
-    bottom: 30px; /* Separado del fondo de la pantalla */
-    right: 30px; /* Separado del borde derecho de la pantalla */
+    visibility: hidden;
+    /* Oculto por defecto */
+    min-width: 250px;
+    /* Ancho mínimo */
+    background-color: #553922;
+    /* Tu marrón corporativo */
+    color: #fdfbf7;
+    /* Letra clara */
+    text-align: center;
+    border-radius: 8px;
+    /* Bordes redondeados */
+    padding: 16px;
+    /* Espacio interior */
+    position: fixed;
+    /* Se queda fijo aunque hagas scroll */
+    z-index: 9999;
+    /* Por encima de TODO en la web */
+    bottom: 30px;
+    /* Separado del fondo de la pantalla */
+    right: 30px;
+    /* Separado del borde derecho de la pantalla */
     font-family: 'Cinzel', serif;
     font-size: 0.9rem;
     font-weight: bold;
     letter-spacing: 1px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
     /* Preparamos la animación para cuando aparezca */
     opacity: 0;
-    transform: translateY(20px); /* Empieza un poco más abajo */
+    transform: translateY(20px);
+    /* Empieza un poco más abajo */
     transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
 }
 
@@ -750,14 +1174,16 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
 #toast-carrito.mostrar {
     visibility: visible;
     opacity: 1;
-    transform: translateY(0); /* Sube a su posición original */
+    transform: translateY(0);
+    /* Sube a su posición original */
 }
 
 /* Adaptación para móviles (para que el aviso no se salga de la pantalla) */
 @media (max-width: 600px) {
     #toast-carrito {
         bottom: 20px;
-        right: 5%; /* Lo centramos un poco más */
+        right: 5%;
+        /* Lo centramos un poco más */
         left: 5%;
         min-width: 90%;
     }
@@ -765,17 +1191,23 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
 
 /* Efecto al pasar el ratón */
 .btn-add-cart:hover {
-    transform: scale(1.1); /* Crece un poquito */
-    background-color: #f7ecd5; /* Un beige un pelín más oscuro al tocarlo */
+    transform: scale(1.1);
+    /* Crece un poquito */
+    background-color: #f7ecd5;
+    /* Un beige un pelín más oscuro al tocarlo */
 }
 
 .info-producto {
     display: flex;
-    justify-content: space-between; /* ¡Esto es lo que empuja cada texto a una punta! */
-    align-items: center; /* Centra los textos verticalmente para que queden alineados */
-    padding: 15px 5px; /* Un poco de aire por arriba y abajo */
+    justify-content: space-between;
+    /* ¡Esto es lo que empuja cada texto a una punta! */
+    align-items: center;
+    /* Centra los textos verticalmente para que queden alineados */
+    padding: 15px 5px;
+    /* Un poco de aire por arriba y abajo */
     font-family: 'Cinzel', serif;
-    color: #4a3b32; /* Tu color marrón corporativo */
+    color: #ffffff;
+    /* Color blanco para mejor contraste */
 }
 
 .info-producto .nombre {
@@ -796,9 +1228,11 @@ flex: 1.5;                 /* Es un poco más ancho que los lados */
 
 /* CARRITO */
 
-html, body {
+html,
+body {
     max-width: 100%;
-    overflow-x: hidden; /* ESTO ES LA CLAVE: Oculta lo que se salga por los lados */
+    overflow-x: hidden;
+    /* ESTO ES LA CLAVE: Oculta lo que se salga por los lados */
     margin: 0;
     padding: 0;
 }
@@ -806,50 +1240,264 @@ html, body {
 .contenedor-checkout {
     display: flex;
     background-color: #F8F5E1;
-    min-height: calc(100vh - 120px); /* Ajusta según el alto del header */
-    align-items: flex-start; /* Evita que los bloques se estiren raro */
+    min-height: calc(100vh - 120px);
+    /* Ajusta según el alto del header */
+    align-items: flex-start;
+    /* Evita que los bloques se estiren raro */
 }
 
 /* Columna izquierda (Beige) */
 .seccion-formulario {
-    grid-column: 1; /* Obligamos a que esté en la columna 1 (izquierda) */
+    grid-column: 1;
+    /* Obligamos a que esté en la columna 1 (izquierda) */
     background-color: #F8F5E1;
     padding: 60px 8%;
     box-sizing: border-box;
 }
 
 
-.logo-carrito { width: 280px; margin-bottom: 40px; }
+.logo-carrito {
+    width: 280px;
+    margin-bottom: 40px;
+}
 
 .cuerpo-carrito {
     display: grid !important;
     /* Creamos dos columnas: una de 55% y otra de 45% */
-    grid-template-columns: 55% 45%; 
-    width: 100vw;
+    grid-template-columns: 55% 45%;
+    width: 100%;
+    /* Changed from 100vw to 100% to avoid overflow */
     background-color: #F8F5E1;
     margin: 0;
     padding: 0;
     align-items: stretch;
 }
 
-/* Columna derecha (Donde ocurre la separación) */
+.grid-articulos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    /* Espacio más pequeño entre cajas */
+    flex: 2;
+    /* Le quita un poco de peso visual */
+}
+
+.imagen-placeholder {
+    background-color: #D9D9D9;
+    aspect-ratio: 1 / 1.1;
+    /* Proporción un poco más cuadrada */
+    width: 100%;
+    max-width: 220px;
+    /* Limitamos el ancho máximo de cada foto */
+    margin: 0 auto;
+    /* Centra la foto en su columna */
+}
+
+
+/* Efecto al pasar el ratón por encima */
+.tarjeta-producto-link:hover .imagen-placeholder {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-add-cart {
+    background-color: #553922;
+    /* Tu color Marrón */
+    border: none;
+    border-radius: 50%;
+    /* Lo hacemos redondito */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 15px;
+    /* Separación desde abajo */
+    right: 15px;
+    /* Separación desde la derecha */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 10;
+}
+
+.btn-add-cart img {
+    width: 20px;
+    /* Ajusta el tamaño del icono de tu carrito */
+    height: auto;
+}
+
+/* =========================================
+   NOTIFICACIÓN FLOTANTE (TOAST)
+========================================= */
+#toast-carrito {
+    visibility: hidden;
+    /* Oculto por defecto */
+    min-width: 250px;
+    /* Ancho mínimo */
+    background-color: #553922;
+    /* Tu marrón corporativo */
+    color: #fdfbf7;
+    /* Letra clara */
+    text-align: center;
+    border-radius: 8px;
+    /* Bordes redondeados */
+    padding: 16px;
+    /* Espacio interior */
+    position: fixed;
+    /* Se queda fijo aunque hagas scroll */
+    z-index: 9999;
+    /* Por encima de TODO en la web */
+    bottom: 30px;
+    /* Separado del fondo de la pantalla */
+    right: 30px;
+    /* Separado del borde derecho de la pantalla */
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+    /* Preparamos la animación para cuando aparezca */
+    opacity: 0;
+    transform: translateY(20px);
+    /* Empieza un poco más abajo */
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+}
+
+/* Esta clase se añade con JavaScript para hacerlo visible */
+#toast-carrito.mostrar {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    /* Sube a su posición original */
+}
+
+/* Adaptación para móviles (para que el aviso no se salga de la pantalla) */
+@media (max-width: 600px) {
+    #toast-carrito {
+        bottom: 20px;
+        right: 5%;
+        /* Lo centramos un poco más */
+        left: 5%;
+        min-width: 90%;
+    }
+}
+
+/* Efecto al pasar el ratón */
+.btn-add-cart:hover {
+    transform: scale(1.1);
+    /* Crece un poquito */
+    background-color: #f7ecd5;
+    /* Un beige un pelín más oscuro al tocarlo */
+}
+
+.info-producto {
+    display: flex;
+    justify-content: space-between;
+    /* ¡Esto es lo que empuja cada texto a una punta! */
+    align-items: center;
+    /* Centra los textos verticalmente para que queden alineados */
+    padding: 15px 5px;
+    /* Un poco de aire por arriba y abajo */
+    font-family: 'Cinzel', serif;
+    color: #ffffff;
+    /* Color blanco para mejor contraste */
+}
+
+.info-producto .nombre {
+    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.info-producto .precio {
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-align: right;
+}
+
+
+
+
+/* CARRITO */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    /* ESTO ES LA CLAVE: Oculta lo que se salga por los lados */
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor-checkout {
+    display: flex;
+    background-color: #F8F5E1;
+    min-height: calc(100vh - 120px);
+    /* Ajusta según el alto del header */
+    align-items: flex-start;
+    /* Evita que los bloques se estiren raro */
+}
+
+/* CARRITO PREMIUM SPLIT DESIGN */
+.cuerpo-carrito {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #F8F5E1;
+    margin: 0;
+    padding-top: 30px;
+    /* Separación sutil añadida */
+    min-height: 100vh;
+}
+
+.seccion-formulario {
+    flex: 0 0 55%;
+    background-color: #F8F5E1;
+    padding: 15px 8% 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
 .seccion-resumen {
-    grid-column: 2; /* Obligamos a que esté en la columna 2 (derecha) */
+    flex: 0 0 45%;
     background-color: #553922 !important;
     color: #F8F5E1;
-    padding: 60px 40px;
+    padding: 15px 5% 60px;
     box-sizing: border-box;
-    
-    /* El truco para subir a la línea del logo */
-    position: relative;
-    margin-top: -200px; 
-    min-height: 120vh;
-    z-index: 10;
+    min-height: 100%;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 992px) {
+    .cuerpo-carrito {
+        display: flex !important;
+        flex-direction: column-reverse;
+        /* El resumen (aside) ahora sale ARRIBA en móvil */
+        padding-top: 85px;
+        /* Separación sutil en móvil */
+    }
+
+    .seccion-formulario {
+        padding: 30px 5% 60px;
+    }
+
+    .seccion-resumen {
+        background-color: #553922 !important;
+        padding: 40px 5% 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        border-bottom: 2px solid rgba(248, 245, 225, 0.1);
+    }
 }
 
 
 .caja-marron-resumen {
-    background-color: #553922; /* El bloque marrón */
+    background-color: #553922;
+    /* El bloque marrón */
     height: calc(100% - 60px);
     padding: 60px 40px;
     color: #F8F5E1;
@@ -858,28 +1506,55 @@ html, body {
 
 .form-checkout {
     width: 100%;
-    max-width: 600px; /* Ajusta esto para que no se estire de más */
-    margin: 0 auto; /* Lo centra en su mitad beige */
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-/* Inputs Grises Estilo Captura */
-.input-gris, .fila-doble input {
-    background-color: #D9D9D9;
-    border: 1px solid #999;
-    padding: 15px;
-    width: 100%;
-    margin-bottom: 15px;
-    box-sizing: border-box; /* Evita que los inputs se salgan del borde */
+.form-checkout h3 {
+    font-size: 1.1rem;
+    margin: 30px 0 15px;
+    letter-spacing: 2px;
+    color: #4A3324;
+    text-align: center;
+    border-bottom: 1px solid rgba(74, 51, 36, 0.1);
+    padding-bottom: 10px;
 }
 
-.input-gris, .form-checkout input, .form-checkout select {
-    background-color: #D9D9D9;
-    border: 1px solid #999;
+@media (max-width: 600px) {
+    .form-checkout h3 {
+        font-size: 0.95rem;
+        margin: 20px 0 10px;
+    }
+}
+
+/* Inputs Estilo Premium */
+
+.input-gris,
+.form-checkout input,
+.form-checkout select {
+    background-color: #fff;
+    /* Blanco para máxima claridad en móviles */
+    border: 1px solid #dcd7bf;
     padding: 15px;
     width: 100%;
     margin-bottom: 15px;
     box-sizing: border-box;
-    border-radius: 4px; /* Ligeramente redondeados */
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    /* Evita zoom automático en iOS */
+    color: #4A3324;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.input-gris:focus,
+.form-checkout input:focus,
+.form-checkout select:focus {
+    outline: none;
+    background-color: #fff;
+    border-color: #4A3324;
+    box-shadow: 0 0 0 3px rgba(74, 51, 36, 0.1);
 }
 
 .fila-doble {
@@ -887,130 +1562,247 @@ html, body {
     gap: 15px;
 }
 
-.fila-inputs { display: flex; gap: 15px; }
-.fila-inputs input { flex: 1; }
+@media (max-width: 600px) {
+    .fila-doble {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+.fila-inputs {
+    display: flex;
+    gap: 15px;
+}
+
+.fila-inputs input {
+    flex: 1;
+}
 
 .btn-finalizar-pago {
-    display: block; /* Ocupa su propia línea */
-    margin: 40px auto 0; /* Centrado horizontal (auto) y espacio arriba (40px) */
-    
-    /* Colores: Fondo marrón como la columna derecha, texto claro */
-    background-color: #553922; 
-    color: #F8F5E1; 
-    
-    /* Tipografía y Tamaño: Tipografía 'Cinzel', negrita, mayúsculas */
+    display: block;
+    margin: 40px auto 0;
+    background-color: #553922;
+    color: #F8F5E1;
     font-family: 'Cinzel', serif;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
-    letter-spacing: 2px; /* Un poco de espacio entre letras para estilo */
-    
-    /* Bordes y Relleno: Totalmente redondeado (cápsula) y espacio interno */
-    padding: 18px 60px;
-    border-radius: 50px; 
-    border: none; /* Sin borde feo por defecto */
-    
-    /* Interactividad */
+    letter-spacing: 2px;
+    padding: 15px 40px;
+    /* Reducido de 60px para evitar desbordes en móviles */
+    border-radius: 50px;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease; /* Efecto suave */
+    transition: all 0.3s ease;
+    width: fit-content;
+    max-width: 90%;
+    /* Asegura que no se salga de la pantalla */
 }
 
 .btn-finalizar-pago:hover {
-    background-color: #3d2818; /* Un marrón un poco más oscuro al hover */
-    transform: scale(1.02); /* Se agranda un pelín para feedback visual */
+    background-color: #3d2818;
+    /* Un marrón un poco más oscuro al hover */
+    transform: scale(1.02);
+    /* Se agranda un pelín para feedback visual */
+}
+
+.mensaje-carrito-vacio {
+    text-align: center;
+    background-color: #F8F5E1;
+    color: #553922;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    margin: 30px 0;
+    letter-spacing: 1px;
 }
 
 .item-carrito {
-    display: flex; /* Pone la foto y el texto en fila */
-    align-items: center; /* Los centra verticalmente */
-    margin-bottom: 30px; /* Espacio entre cada producto */
-    border-bottom: 1px solid rgba(248, 245, 225, 0.1); /* Opcional: una línea finita separadora si te gusta */
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(248, 245, 225, 0.1);
     padding-bottom: 20px;
+    position: relative;
 }
 
 .cuadro-foto {
-    width: 100px;  /* Tamaño cuadrado fijo */
-    height: 100px;
-    background-color: #D9D9D9; /* El gris de tu diseño */
-    margin-right: 25px; /* Separación con el texto */
-    flex-shrink: 0; /* Evita que se aplaste si la pantalla es pequeña */
-    border-radius: 2px; /* Un pelín redondeado para que quede fino */
+    width: 80px;
+    height: 80px;
+    background-color: rgba(248, 245, 225, 0.05);
+    border: 1px solid rgba(248, 245, 225, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .info-producto {
-    color: #F8F5E1; /* Color beige claro */
-    font-family: 'Cinzel', serif; /* Tu tipografía corporativa */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .nombre-producto {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: bold;
-    margin: 0 0 10px 0; /* Espacio debajo del nombre */
+    color: #F8F5E1;
+    text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .precio-producto {
-    font-size: 1rem;
-    opacity: 0.9; /* Un poco más suave */
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #F8F5E1;
+}
+
+.btn-quitar-item {
+    font-size: 10px;
+    color: #F8F5E1;
+    opacity: 0.5;
+    cursor: pointer;
+    text-decoration: underline;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.btn-quitar-item:hover {
+    opacity: 1;
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff6b6b;
+}
+
+@media (max-width: 480px) {
+    .item-carrito {
+        grid-template-columns: 60px 1fr;
+        gap: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+
+    .cuadro-foto {
+        width: 60px;
+        height: 60px;
+    }
+
+    .nombre-producto {
+        font-size: 0.8rem;
+    }
+
+    .precio-producto {
+        font-size: 0.85rem;
+    }
+
+    .btn-quitar-item {
+        padding: 3px 6px;
+        font-size: 8px;
+    }
+
+    .gran-total {
+        font-size: 1.6rem;
+    }
 }
 
 
 
 /* --- CUPÓN DE DESCUENTO --- */
 .bloque-inferior-resumen {
-    margin-top: 40px; /* Separa los totales de la lista de productos */
-    border-top: 1px solid rgba(248, 245, 225, 0.2); /* Una línea sutil separadora */
+    margin-top: 40px;
+    /* Separa los totales de la lista de productos */
+    border-top: 1px solid rgba(248, 245, 225, 0.2);
+    /* Una línea sutil separadora */
     padding-top: 30px;
 }
 
 .fila-cupon {
     display: flex;
-    gap: 15px; /* Espacio entre el input y el botón */
+    gap: 15px;
     margin-bottom: 30px;
 }
 
+@media (max-width: 400px) {
+    .fila-cupon {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-aplicar {
+        padding: 12px 0;
+        width: 100%;
+    }
+}
+
 .input-cupon {
-    flex: 1; /* Ocupa todo el espacio posible */
-    background-color: #D9D9D9; /* Gris claro */
-    border: none;
-    border-radius: 50px; /* REDONDO TIPO CÁPSULA */
-    padding: 15px 25px;
-    font-family: 'Cinzel', serif;
+    flex: 1;
+    background-color: rgba(248, 245, 225, 0.1);
+    border: 1px solid rgba(248, 245, 225, 0.2);
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-family: inherit;
     font-size: 0.8rem;
-    color: #553922;
+    color: #F8F5E1;
+    transition: all 0.3s;
+}
+
+.input-cupon:focus {
+    outline: none;
+    background-color: rgba(248, 245, 225, 0.2);
+    border-color: #F8F5E1;
+}
+
+.input-cupon::placeholder {
+    color: rgba(248, 245, 225, 0.4);
 }
 
 .btn-aplicar {
-    background-color: #E6E6E6; /* Un gris casi blanco, como en la foto */
+    background-color: #F8F5E1;
     color: #553922;
     border: none;
-    border-radius: 50px; /* REDONDO TIPO CÁPSULA */
+    border-radius: 50px;
     padding: 0 30px;
     font-family: 'Cinzel', serif;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
 }
 
 .btn-aplicar:hover {
     background-color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .precios-finales p {
-    margin: 8px 0;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+    margin: 12px 0;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
     font-family: 'Cinzel', serif;
+    opacity: 0.8;
 }
 
 /* El TOTAL gigante */
 .gran-total {
-    font-size: 2.2rem; /* Tamaño grande como en la foto */
-    margin-top: 15px;
+    font-size: 2.5rem;
+    margin-top: 20px;
     font-weight: 700;
     letter-spacing: 1px;
     font-family: 'Cinzel', serif;
+    border-top: 1px solid rgba(248, 245, 225, 0.1);
+    padding-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .gran-total {
+        font-size: 2rem;
+    }
 }
 
 
@@ -1020,7 +1812,8 @@ html, body {
     padding: 25px 0;
     display: flex;
     justify-content: center;
-    border-bottom: 2px solid #606C38; /* La línea de la foto */
+    border-bottom: 2px solid #606C38;
+    /* La línea de la foto */
     border-radius: 1%;
 }
 
@@ -1034,7 +1827,8 @@ html, body {
 
 
 .logo-header {
-    width: 180px; /* Ajusta según el tamaño de tu imagen original */
+    width: 180px;
+    /* Ajusta según el tamaño de tu imagen original */
     height: auto;
 }
 
@@ -1043,7 +1837,8 @@ html, body {
 .contenedor-pago-bordes {
     border: 1px solid #999;
     border-radius: 4px;
-    background-color: #f2f2f2; /* Gris claro de fondo de la caja */
+    background-color: #f2f2f2;
+    /* Gris claro de fondo de la caja */
     overflow: hidden;
 }
 
@@ -1052,28 +1847,39 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff; /* Blanco como en la foto */
+    background-color: #fff;
+    /* Blanco como en la foto */
     cursor: pointer;
 }
 
-.border-top { border-top: 1px solid #999; }
+.border-top {
+    border-top: 1px solid #999;
+}
 
 .campos-tarjeta-bloque {
     padding: 20px;
-    background-color: #D9D9D9; /* Gris oscuro para los campos internos */
-    display: block; /* Por defecto se ve */
+    background-color: #D9D9D9;
+    /* Gris oscuro para los campos internos */
+    display: block;
+    /* Por defecto se ve */
 }
 
-.input-tarjeta-full, .campos-tarjeta-bloque input {
-    background-color: #A6A6A6; /* Gris más fuerte para los inputs internos */
+.input-tarjeta-full,
+.campos-tarjeta-bloque input {
+    background-color: #A6A6A6;
+    /* Gris más fuerte para los inputs internos */
     border: none;
     padding: 12px;
     margin-bottom: 10px;
-    border-radius: 15px; /* Bordes muy redondeados como la foto */
+    border-radius: 15px;
+    /* Bordes muy redondeados como la foto */
     width: 100%;
 }
 
-.iconos-tarjetas img { height: 18px; margin-left: 5px; }
+.iconos-tarjetas img {
+    height: 18px;
+    margin-left: 5px;
+}
 
 /* --- CONTENEDOR FLOTANTE WHATSAPP --- */
 .whatsapp-contenedor {
@@ -1083,33 +1889,35 @@ html, body {
     z-index: 1000;
     display: flex;
     align-items: center;
-    gap: 15px; /* Espacio entre el mensaje y el botón */
+    gap: 15px;
+    /* Espacio entre el mensaje y el botón */
 }
 
 /* --- EL MENSAJE DE TEXTO (BOCADILLO) --- */
 .whatsapp-mensaje {
     background-color: #ffffff;
-    color: #4a3b32; 
+    color: #4a3b32;
     padding: 10px 18px;
     border-radius: 20px;
-    font-family: 'Cinzel', serif; 
+    font-family: 'Cinzel', serif;
     font-weight: bold;
     font-size: 0.85rem;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
     position: relative;
-    pointer-events: none; /* IMPORTANTE: Para que cuando desaparezca no bloquee clics sin querer */
-    
+    pointer-events: none;
+    /* IMPORTANTE: Para que cuando desaparezca no bloquee clics sin querer */
+
     /* Estado inicial invisible */
     opacity: 0;
     /* Nueva Animación: dura 5 segundos en total y empieza a los 1.5 segundos de entrar */
-    animation: aparecerYDesaparecer 5s ease forwards 1.5s; 
+    animation: aparecerYDesaparecer 5s ease forwards 1.5s;
 }
 
 /* El piquito del bocadillo apuntando al botón */
 .whatsapp-mensaje::after {
     content: '';
     position: absolute;
-    right: -8px; 
+    right: -8px;
     top: 50%;
     transform: translateY(-50%);
     border-left: 8px solid #ffffff;
@@ -1146,16 +1954,19 @@ html, body {
         opacity: 0;
         transform: translateX(20px);
     }
+
     10% {
         /* Aparece suavemente al principio */
         opacity: 1;
         transform: translateX(0);
     }
+
     80% {
         /* Se queda quieto y visible durante unos 3.5 segundos */
         opacity: 1;
         transform: translateX(0);
     }
+
     100% {
         /* Se desvanece y desaparece al final */
         opacity: 0;
@@ -1168,14 +1979,15 @@ html, body {
     .whatsapp-contenedor {
         bottom: 20px;
         right: 20px;
-        flex-direction: column; /* Pone el texto encima del botón en móvil */
+        flex-direction: column;
+        /* Pone el texto encima del botón en móvil */
         align-items: flex-end;
         gap: 10px;
     }
-    
+
     /* Cambiamos la dirección del piquito para que apunte hacia abajo en móvil */
     .whatsapp-mensaje::after {
-        right: 15px; 
+        right: 15px;
         top: auto;
         bottom: -8px;
         border-left: 8px solid transparent;
@@ -1189,6 +2001,7 @@ html, body {
         width: 50px;
         height: 50px;
     }
+
     .whatsapp-icono {
         width: 30px;
         height: 30px;
@@ -1206,11 +2019,13 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.65); /* Oscurece el fondo */
+    background-color: rgba(0, 0, 0, 0.65);
+    /* Oscurece el fondo */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000; /* Siempre por encima de todo */
+    z-index: 2000;
+    /* Siempre por encima de todo */
     animation: aparecerFondo 0.5s ease;
 }
 
@@ -1222,8 +2037,9 @@ html, body {
     max-width: 650px;
     width: 90%;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    overflow: hidden; /* Para que la marca de agua no se salga */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    /* Para que la marca de agua no se salga */
 }
 
 /* La marca de agua con tu logo en el fondo */
@@ -1235,16 +2051,18 @@ html, body {
     transform: translate(-50%, -50%);
     width: 80%;
     height: 80%;
-    background-image: url('img/LOGOSIN.png'); /* Asegúrate de que la ruta es correcta */
+    background-image: url('img/LOGOSIN.png');
+    /* Asegúrate de que la ruta es correcta */
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    opacity: 0.15; /* Súper transparente para que se lea el texto */
+    opacity: 0.15;
+    /* Súper transparente para que se lea el texto */
     z-index: 1;
 }
 
 /* Para asegurar que el texto se vea por encima de la marca de agua */
-.cartita-popup > * {
+.cartita-popup>* {
     position: relative;
     z-index: 2;
 }
@@ -1310,8 +2128,13 @@ html, body {
 }
 
 @keyframes aparecerFondo {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Adaptación para móviles */
@@ -1319,6 +2142,7 @@ html, body {
     .cartita-popup {
         padding: 40px 20px;
     }
+
     .texto-carta {
         font-size: 1rem;
     }
@@ -1333,7 +2157,8 @@ html, body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 60px 20px;
-    color: #4a3b32; /* Tono marrón oscuro para el texto */
+    color: #4a3b32;
+    /* Tono marrón oscuro para el texto */
 }
 
 /* Títulos con subrayado */
@@ -1343,13 +2168,15 @@ html, body {
     letter-spacing: 2px;
     margin-bottom: 25px;
     display: inline-block;
-    border-bottom: 2px solid #4a3b32; /* La línea debajo del título */
+    border-bottom: 2px solid #4a3b32;
+    /* La línea debajo del título */
     padding-bottom: 5px;
 }
 
 /* Texto de la Historia */
 .seccion-historia p {
-    font-family: 'Cinzel', serif; /* Usamos Cinzel o tu fuente secundaria */
+    font-family: 'Cinzel', serif;
+    /* Usamos Cinzel o tu fuente secundaria */
     font-size: 0.95rem;
     line-height: 2;
     letter-spacing: 1.5px;
@@ -1362,13 +2189,15 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px; /* Espacio entre las imágenes */
+    gap: 30px;
+    /* Espacio entre las imágenes */
     margin-bottom: 80px;
 }
 
 /* Cajas grises simulando imágenes */
 .caja-imagen {
-    background-color: #d6d6d6; /* Color gris claro */
+    background-color: #d6d6d6;
+    /* Color gris claro */
     position: relative;
     display: flex;
     justify-content: center;
@@ -1389,7 +2218,8 @@ html, body {
 
 /* Botones Rojos del Carrusel (< >) */
 .btn-carrusel {
-    background-color: #283618; /* Rojo suave del diseño */
+    background-color: #283618;
+    /* Rojo suave del diseño */
     color: white;
     border: none;
     width: 40px;
@@ -1411,7 +2241,8 @@ html, body {
 
 /* --- SECCIÓN PRODUCTOS --- */
 .seccion-productos-info {
-    text-align: left; /* Título a la izquierda */
+    text-align: left;
+    /* Título a la izquierda */
 }
 
 /* Párrafo destacado (centrado y negrita) */
@@ -1421,7 +2252,8 @@ html, body {
     line-height: 2;
     letter-spacing: 1.5px;
     font-weight: bold;
-    text-align: center; /* Este texto va centrado según el diseño */
+    text-align: center;
+    /* Este texto va centrado según el diseño */
     margin-top: 30px;
     padding: 0 40px;
 }
@@ -1432,14 +2264,17 @@ html, body {
         flex-direction: column;
         gap: 20px;
     }
+
     .caja-imagen.lateral {
         width: 100%;
         height: 200px;
     }
+
     .caja-imagen.central {
         width: 100%;
         height: 300px;
     }
+
     .seccion-productos-info .texto-destacado {
         padding: 0 10px;
     }
@@ -1454,7 +2289,8 @@ html, body {
     max-width: 1100px;
     margin: 0 auto;
     padding: 40px 20px;
-    color: #553922; /* Marrón oscuro principal */
+    color: #553922;
+    /* Marrón oscuro principal */
     font-family: 'Cinzel', serif;
 }
 
@@ -1482,7 +2318,8 @@ html, body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Todo centrado como en tu foto */
+    align-items: center;
+    /* Todo centrado como en tu foto */
     text-align: center;
 }
 
@@ -1497,7 +2334,8 @@ html, body {
     line-height: 2;
     letter-spacing: 1.5px;
     margin-bottom: 30px;
-    max-width: 400px; /* Para que el texto no se haga muy ancho */
+    max-width: 400px;
+    /* Para que el texto no se haga muy ancho */
 }
 
 /* Opciones de suscripción (Radio buttons) */
@@ -1522,7 +2360,8 @@ html, body {
 }
 
 .opcion-radio input {
-    display: none; /* Ocultamos el circulito por defecto del navegador */
+    display: none;
+    /* Ocultamos el circulito por defecto del navegador */
 }
 
 /* Diseño del circulito personalizado */
@@ -1530,15 +2369,19 @@ html, body {
     width: 10px;
     height: 16px;
     border: 2px solid #553922;
-    border-radius: 10px; /* Forma ovalada como en tu diseño */
+    border-radius: 10px;
+    /* Forma ovalada como en tu diseño */
     display: inline-block;
     position: relative;
 }
 
-.opcion-radio input:checked + .custom-radio::after {
+.opcion-radio input:checked+.custom-radio::after {
     content: '';
     position: absolute;
-    top: 2px; left: 2px; right: 2px; bottom: 2px;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
     background-color: #553922;
     border-radius: 10px;
 }
@@ -1578,7 +2421,8 @@ html, body {
 }
 
 .info-box-marron {
-    background-color: #553922; /* Tu marrón oscuro */
+    background-color: #553922;
+    /* Tu marrón oscuro */
     color: #fdfbf7;
     padding: 40px 60px;
     border-radius: 5px;
@@ -1588,7 +2432,7 @@ html, body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding-bottom: 15px;
 }
 
@@ -1644,7 +2488,8 @@ html, body {
     background: none;
     border: none;
     font-size: 2rem;
-    color: #8b8076; /* Flechas más claritas como en el diseño */
+    color: #8b8076;
+    /* Flechas más claritas como en el diseño */
     cursor: pointer;
     padding: 10px;
 }
@@ -1655,7 +2500,8 @@ html, body {
 
 .grid-relacionados {
     display: flex;
-    align-items: flex-end; /* Para que la caja del medio destaque hacia arriba */
+    align-items: flex-end;
+    /* Para que la caja del medio destaque hacia arriba */
     gap: 20px;
 }
 
@@ -1674,7 +2520,7 @@ html, body {
 
 /* La imagen central es un poco más alta en tu diseño */
 .item-relacionado.central .img-placeholder {
-    height: 280px; 
+    height: 280px;
 }
 
 .item-meta {
@@ -1690,23 +2536,30 @@ html, body {
     .producto-hero {
         flex-direction: column;
     }
+
     .info-box-marron {
         padding: 30px 20px;
     }
+
     .tabs-nav {
         flex-direction: column;
         gap: 20px;
         align-items: center;
     }
+
     .grid-relacionados {
         flex-direction: column;
         align-items: center;
     }
+
     .item-relacionado.central .img-placeholder {
-        height: 250px; /* Igualamos alturas en móvil */
+        height: 250px;
+        /* Igualamos alturas en móvil */
     }
+
     .flecha-nav {
-        display: none; /* Ocultamos flechas en móvil, mejor hacer scroll */
+        display: none;
+        /* Ocultamos flechas en móvil, mejor hacer scroll */
     }
 }
 
@@ -1718,38 +2571,48 @@ html, body {
 
 /* Paleta de colores nueva para esta sección */
 :root {
-    --marron-club: #553922; /* Marrón oscuro cálido */
-    --verde-oscuro: #5e6b43; /* Verde oliva oscuro */
-    --verde-claro: #8a9a65; /* Verde oliva claro (para textos FAQ) */
+    --marron-club: #553922;
+    /* Marrón oscuro cálido */
+    --verde-oscuro: #5e6b43;
+    /* Verde oliva oscuro */
+    --verde-claro: #8a9a65;
+    /* Verde oliva claro (para textos FAQ) */
 }
 
 .pagina-club-pan {
-    max-width: 900px; /* Un poco más estrecho para facilitar la lectura */
+    max-width: 900px;
+    /* Un poco más estrecho para facilitar la lectura */
     margin: 0 auto;
     padding: 40px 20px 80px 20px;
-    color: #553922; /* Marrón oscuro para el texto */
+    color: #553922;
+    /* Marrón oscuro para el texto */
     font-family: 'Cinzel', serif;
 }
 
 /* --- SECCIÓN 1: INTRO --- */
 .banner-titulo {
-    background-color: #FEFAE0; /* Fondo clarito del banner */
+    background-color: #FEFAE0;
+    /* Fondo clarito del banner */
     position: relative;
     padding: 60px 20px;
     text-align: center;
     margin-bottom: 30px;
     border-radius: 5px;
-    overflow: hidden; /* Para contener la imagen de fondo */
+    overflow: hidden;
+    /* Para contener la imagen de fondo */
 }
 
 /* Simulación de la marca de agua con el logo detrás del título */
 .banner-titulo::before {
     content: '';
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 250px; height: 250px;
-    background-image: url('img/LOGOSIN.png'); /* Asegúrate de que la ruta es correcta */
+    width: 250px;
+    height: 250px;
+    background-image: url('img/LOGOSIN.png');
+    /* Asegúrate de que la ruta es correcta */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1776,7 +2639,9 @@ html, body {
 
 
 /* --- SECCIÓN 2: BENEFICIOS (ACORDEÓN) --- */
-.beneficios-club h2, .planes-club h2, .logistica-faq h2 {
+.beneficios-club h2,
+.planes-club h2,
+.logistica-faq h2 {
     font-size: 1.5rem;
     letter-spacing: 1px;
     margin-bottom: 30px;
@@ -1810,11 +2675,12 @@ html, body {
     font-weight: bold;
     letter-spacing: 2px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.2s ease, opacity 0.2s ease;
     position: relative;
-    z-index: 2; /* Para que quede por encima del cuadradito al abrirse */
+    z-index: 2;
+    /* Para que quede por encima del cuadradito al abrirse */
 }
 
 .caja-beneficio:hover {
@@ -1833,21 +2699,27 @@ html, body {
 .contenido-acordeon {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out; /* Animación súper suave */
-    border-radius: 0 0 8px 8px; /* Esquinas redondeadas solo abajo */
-    margin-top: -5px; /* Sube un poco para pegarse al botón */
+    transition: max-height 0.4s ease-out;
+    /* Animación súper suave */
+    border-radius: 0 0 8px 8px;
+    /* Esquinas redondeadas solo abajo */
+    margin-top: -5px;
+    /* Sube un poco para pegarse al botón */
     position: relative;
-    z-index: 1; /* Se esconde detrás del borde del botón */
+    z-index: 1;
+    /* Se esconde detrás del borde del botón */
 }
 
 .contenido-acordeon p {
-    padding: 25px 30px 25px 30px; /* Espacio interior del texto */
+    padding: 25px 30px 25px 30px;
+    /* Espacio interior del texto */
     margin: 0;
     font-family: 'Cinzel', serif;
     font-size: 0.85rem;
     line-height: 1.8;
     letter-spacing: 1px;
-    text-align: left; /* El texto largo se lee mejor a la izquierda o justificado */
+    text-align: left;
+    /* El texto largo se lee mejor a la izquierda o justificado */
 }
 
 /* Colores cruzados para los cuadraditos */
@@ -1875,7 +2747,7 @@ html, body {
     padding: 30px 40px;
     border-radius: 15px;
     margin-bottom: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     position: relative;
 }
 
@@ -1883,7 +2755,7 @@ html, body {
     font-size: 1.1rem;
     letter-spacing: 1px;
     margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding-bottom: 10px;
 }
 
@@ -1896,7 +2768,8 @@ html, body {
 
 .contenedor-btn-plan {
     display: flex;
-    justify-content: flex-end; /* Alinea el botón a la derecha */
+    justify-content: flex-end;
+    /* Alinea el botón a la derecha */
     margin-top: 20px;
 }
 
@@ -1915,7 +2788,8 @@ html, body {
 }
 
 .btn-verde-plan:hover {
-    background-color: #4a5433; /* Un verde un poco más oscuro al pasar el ratón */
+    background-color: #4a5433;
+    /* Un verde un poco más oscuro al pasar el ratón */
 }
 
 /* --- SECCIÓN 4: LOGÍSTICA Y FAQ --- */
@@ -1972,39 +2846,50 @@ html, body {
 ========================================= */
 .contenedor-boton-centro {
     text-align: center;
-    margin-top: 50px; /* Separa el botón de los 3 pasos */
+    margin-top: 50px;
+    /* Separa el botón de los 3 pasos */
     margin-bottom: 20px;
 }
 
 .btn-marron-redondeado {
     display: inline-block;
-    background-color: #553922; /* Tu color marrón oscuro característico */
-    color: #fdfbf7; /* Letra color crema claro */
+    background-color: #553922;
+    /* Tu color marrón oscuro característico */
+    color: #fdfbf7;
+    /* Letra color crema claro */
     text-decoration: none;
-    padding: 18px 40px; /* Tamaño del botón (alto y ancho) */
-    border-radius: 12px; /* Las esquinas redondeadas */
+    padding: 18px 40px;
+    /* Tamaño del botón (alto y ancho) */
+    border-radius: 12px;
+    /* Las esquinas redondeadas */
     font-family: 'Cinzel', serif;
     font-size: 1.1rem;
     font-weight: bold;
     letter-spacing: 2px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Una sombra suave para que resalte */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    /* Una sombra suave para que resalte */
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Efecto al pasar el ratón por encima */
 .btn-marron-redondeado:hover {
-    background-color: #31261f; /* Se vuelve un marrón un poco más oscuro */
-    transform: scale(1.03); /* El botón crece un poquito */
+    background-color: #31261f;
+    /* Se vuelve un marrón un poco más oscuro */
+    transform: scale(1.03);
+    /* El botón crece un poquito */
 }
 
 /* =========================================
    AJUSTES PARA LAS FOTOS DEL CARRUSEL
 ========================================= */
 .caja-imagen {
-    background-size: cover; /* Hace que la foto llene toda la caja sin deformarse */
-    background-position: center; /* Centra la foto */
+    background-size: cover;
+    /* Hace que la foto llene toda la caja sin deformarse */
+    background-position: center;
+    /* Centra la foto */
     background-repeat: no-repeat;
-    transition: background-image 0.4s ease-in-out; /* Animación súper suave al cambiar de foto */
+    transition: background-image 0.4s ease-in-out;
+    /* Animación súper suave al cambiar de foto */
 }
 
 
@@ -2024,8 +2909,15 @@ html, body {
 
 /* Animación para que el texto aparezca suavemente */
 @keyframes fadeInPestana {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Modificamos un poco las negritas en las FAQ para que resalten */
@@ -2035,411 +2927,291 @@ html, body {
     font-size: 0.9rem;
 }
 
-/* Para cuando las cajas grises se conviertan en fotos reales */
+/* For cuando las cajas grises se conviertan en fotos reales */
 img.img-placeholder {
     width: 100%;
-    height: 250px; /* Mantiene la misma altura que los cuadros grises */
-    object-fit: cover; /* MAGIA: recorta la foto para que encaje perfecta sin deformarse */
-    border-radius: 4px; /* Unos bordes un pelín redondeados para que quede suave */
+    height: 250px;
 }
 
+/* --- MOBILE RESPONSIVE OPTIMIZATIONS --- */
+@media (max-width: 768px) {
 
-
-/* =========================================================
-   📱 DISEÑO RESPONSIVE EXTREMO (MÓVILES)
-========================================================= */
-@media (max-width: 800px) {
-    /* 1. MANTENER LA PANTALLA EN SU SITIO */
-    body, html { 
-        overflow-x: hidden; 
-    }
-    * { 
-        box-sizing: border-box; 
+    /* General spacing */
+    section {
+        padding: 40px 5% !important;
     }
 
-    /* 2. REINICIAR LA CAJA MARRÓN */
-   header { 
-        padding: 10px;
-        width: 98%;
-        height: auto !important; /* 👈 CAMBIO 1: Sustituye el 100px por esto */
-        display: flex;
-        justify-content: center; 
-    }
-
-    .logo-box {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important; /* Centra botones y logo dentro del marrón */
-        width: 92% !important;
-        max-width: 350px; /* Ancho máximo igual que escritorio */
-        margin: 0 auto !important; /* Centra el contenedor marrón en la pantalla */
-        height: 125% !important;
-        padding: 15px 10px 20px 10px !important; /* Espacio para el óvalo */
-        border-radius: 100px !important; /* Mantiene la forma de píldora de escritorio */
-        margin-right:  15% !important;
-        position: relative !important;
-    }
-    
-    .header-pildora-container{
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important; /* Centra botones y logo dentro del marrón */
-        width: 92% !important;
-        max-width: 350px; /* Ancho máximo igual que escritorio */
-        margin: 0 auto !important; /* Centra el contenedor marrón en la pantalla */
-        height: 125% !important;
-        padding: 15px 10px 20px 10px !important; /* Espacio para el óvalo */
-        border-radius: 100px !important; /* Mantiene la forma de píldora de escritorio */
-        margin-right:  15% !important;
-        position: relative !important;
-    }
-
-    /* 🚨 3. EL ÓVALO PERFECTAMENTE CENTRADO Y CON FORMA CORRECTA 🚨 */
-    .logo-circle {
-        position: relative !important; /* Desactiva posicionamientos desktop */
-        top: 0 !important;
-        transform: none !important; /* Cancela desplazamientos raro */
-        
-        /* MAGIA PARA EL ÓVALO: Más ancho que alto */
-        width: 220px !important; /* Ancho de óvalo para móvil */
-        height: 100px !important; /* Alto de óvalo para móvil */
-        
-        /* MAGIA PARA LA FORMA OVÁLICA: Border-radius alto */
-        border-radius: 90px !important; 
-        
-        /* MAGIA PARA EL CENTRADO TOTAL */
-        margin: 15px auto !important; /* Centrado horizontal automático */
-        
-        /* Alineación interna */
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 3px !important; /* Espacio entre logo y texto */
-    }
-
-    .logo-ovalo-contenedor {
-        position: relative !important; /* Desactiva posicionamientos desktop */
-        top: 0 !important;
-        transform: none !important; /* Cancela desplazamientos raro */
-        
-        /* MAGIA PARA EL ÓVALO: Más ancho que alto */
-        width: 220px !important; /* Ancho de óvalo para móvil */
-        height: 100px !important; /* Alto de óvalo para móvil */
-        
-        /* MAGIA PARA LA FORMA OVÁLICA: Border-radius alto */
-        border-radius: 90px !important; 
-        
-        /* MAGIA PARA EL CENTRADO TOTAL */
-        margin: 15px auto !important; /* Centrado horizontal automático */
-        
-        /* Alineación interna */
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 3px !important; /* Espacio entre logo y texto */
-    }
-
-    /* 🚨 4. DOMAR LA IMAGEN Y EL TEXTO PARA QUE QUEPAN EN EL ÓVALO PEQUEÑO 🚨 */
-    .main-logo {
-        max-height: 130px !important; /* El cupcake no puede ser gigante */
-        width: 120px !important;
-        margin-top: 25px;
-        margin-left: 0px;
-        
-        
-        position: static !important;
-        transform: none !important;
-        display: block !important;
-    }
-
-    .logo-imagen-central {
-        max-height: 130px !important; /* El cupcake no puede ser gigante */
-        width: 120px !important;
-        margin-top: 25px;
-        margin-left: 0px;
-        
-        
-        position: static !important;
-        transform: none !important;
-        display: block !important;
-    }
-
-
-    /* 5. METER LOS BOTONES EN VEREDA */
-    .contenedor-botones {
-        display: flex ;
-        flex-direction: column ;
-        align-items: center ;
-        width: 100% ;
-        gap: 8px ;
-        margin-bottom: 15px ;
-        padding: 0 ;
-    }
-
-    .header-seccion.izquierda-desktop {
-        display: flex ;
-        flex-direction: column ;
-        align-items: center ;
-        width: 100% ;
-        gap: 8px ;
-        margin-bottom: 15px ;
-        padding: 0 ;
-    }
-
-
-    .boton-nav {
-        width: 40%; /* No ocupamos todo el ancho marrón */
-        text-align: center;
-        margin: 0 auto;
-        padding: 8px 15px;
-        font-size: 0.8rem ;
-    }
-
-    .boton-nav-pildora {
-        width: 40%; /* No ocupamos todo el ancho marrón */
-        text-align: center;
-        margin: 0 auto;
-        padding: 8px 15px;
-        font-size: 0.8rem ;
-    }
-
-/* =========================================
-       6. ICONOS BLANCOS (UNIFICADO Y LIMPIO)
-    ========================================= */
-    .contenedor-iconos {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-        
-        /* Empujamos hacia abajo sin romper la caja */
-        padding-top: 85px !important; 
-        padding-bottom: 10px !important;
-        margin: 0 !important; 
-        
-        /* 🚨 AQUÍ TIENES TU GAP. Ponlo a 2px o a 0px, ahora sí te hará caso 🚨 */
-        gap: 5px !important; 
-        
-        /* Mueve los iconos a la derecha */
-        transform: translateX(50px) !important; 
-        
-        /* Antisolapamiento */
-        position: relative !important;
-        z-index: 50 !important; 
-        
-        /* Por si son una lista (ul), le matamos el margen izquierdo invisible */
-        list-style: none !important;
-        padding-left: 0 !important;
-    }
-
-    .header-seccion.derecha {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-        
-        /* Empujamos hacia abajo sin romper la caja */
-        padding-top: 85px !important; 
-        padding-bottom: 10px !important;
-        margin: 0 !important; 
-        
-        /* 🚨 AQUÍ TIENES TU GAP. Ponlo a 2px o a 0px, ahora sí te hará caso 🚨 */
-        gap: 5px !important; 
-        
-        /* Mueve los iconos a la derecha */
-        transform: translateX(50px) !important; 
-        
-        /* Antisolapamiento */
-        position: relative !important;
-        z-index: 50 !important; 
-        
-        /* Por si son una lista (ul), le matamos el margen izquierdo invisible */
-        list-style: none !important;
-        padding-left: 0 !important;
-    }
-
-
-    .iconos-productos {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-        
-        /* Empujamos hacia abajo sin romper la caja */
-        padding-top: 85px !important; 
-        padding-bottom: 10px !important;
-        margin: 0 !important; 
-        
-        /* 🚨 AQUÍ TIENES TU GAP. Ponlo a 2px o a 0px, ahora sí te hará caso 🚨 */
-        gap: 5px !important; 
-        
-        /* Mueve los iconos a la derecha */
-        transform: translateX(50px) !important; 
-        
-        /* Antisolapamiento */
-        position: relative !important;
-        z-index: 50 !important; 
-        
-        /* Por si son una lista (ul), le matamos el margen izquierdo invisible */
-        list-style: none !important;
-        padding-left: 0 !important;
-    }
-
-    /* MATAMOS LOS PARACHOQUES DE LOS ENLACES (Y LISTAS SI LAS HAY) */
-    .contenedor-iconos a {
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important; 
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    .header-seccion.derecha a {
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important; 
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    .contenedor-iconos li {
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important; 
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    /* CONTROLAMOS EL TAMAÑO EXACTO DE LAS FOTOS */
-    .contenedor-iconos img {
-        width: 20px !important; /* Tamaño de la lupa/carrito */
-        height: auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: block !important; /* Quita espacios raros debajo de la foto */
-    }
-
-    .iconos-productos img {
-        width: 20px !important; /* Tamaño de la lupa/carrito */
-        height: auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: block !important; /* Quita espacios raros debajo de la foto */
-    }
-
-    .header-seccion.derecha img {
-        width: 20px !important; /* Tamaño de la lupa/carrito */
-        height: auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: block !important; /* Quita espacios raros debajo de la foto */
-    }
-
-    /* MURO INVISIBLE DEBAJO DEL LOGO */
-    .logo-circle {
-        margin-bottom: 15px !important; 
-    }
-
-    .logo-ovalo-contenedor {
-        margin-bottom: 15px !important; 
-    }
-
-    .main-logo {
-        margin-bottom: 15px !important; 
-    }
-
-    /* ========================================================= */
-    /* A PARTIR DE AQUÍ ES TU CÓDIGO INTACTO, NO HE TOCADO NADA */
-    /* ========================================================= */
-
-    /* 2. FORZAR 1 SOLA COLUMNA EN TODAS LAS CUADRÍCULAS */
-    .pasos-grid, 
-    .grid-articulos, 
-    .grid-relacionados, 
-    .testimonials-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 20px;
-        padding: 10px;
-    }
-
-    /* 3. PÁGINA DE PRODUCTO INDIVIDUAL */
-    .producto-hero { 
-        flex-direction: column; 
-        padding: 10px;
-    }
-    .producto-imagen, 
-    .producto-info { 
-        width: 100% !important; 
-        padding: 0; 
-        margin-bottom: 20px; 
-    }
-    .opciones-compra {
+    /* Benefits section */
+    .benefits {
         flex-direction: column;
-        gap: 15px;
-        align-items: flex-start;
+        gap: 30px;
+        padding: 40px 10% !important;
+        /* Balanced padding */
     }
-    .accion-comprar {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .btn-carrito {
+
+    .benefit {
         width: 100%;
     }
-    .tabs-nav { 
-        flex-direction: column; 
-    }
-    .tab-btn { 
-        width: 100%; 
-        margin-bottom: 5px; 
+
+    /* Como funciona section */
+    .pasos-grid {
+        flex-direction: column;
+        gap: 20px;
     }
 
-    /* 4. CARRITO Y CHECKOUT */
-    .cuerpo-carrito { 
-        flex-direction: column; 
-        padding: 10px; 
+    .paso {
+        min-width: unset;
     }
-    .seccion-formulario, 
-    .seccion-resumen { 
-        width: 100% !important; 
-        margin: 0 0 30px 0 !important; 
-    }
-    .fila-doble { 
-        flex-direction: column; 
-        gap: 15px; 
-    }
-    .fila-doble input { 
-        width: 100% !important; 
-    }
-    .fila-cupon {
+
+    /* Main Grid Banners */
+    .main-content {
         flex-direction: column;
+        height: auto;
+        padding: 0 5%;
+    }
+
+    .banner-vertical {
+        height: 400px;
+    }
+
+    .banner-vertical h2 {
+        writing-mode: horizontal-tb;
+        font-size: 30px;
+    }
+
+    .right-column {
+        flex: none;
+        width: 100%;
+        height: auto;
+        /* Changed from 600px to auto */
+        gap: 15px;
+    }
+
+    .banner-horizontal {
+        height: 250px;
+        /* Specific height for better mobile look */
+        padding: 20px;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .testimonial {
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(74, 51, 36, 0.1);
+        text-align: center;
+        /* Center text on mobile */
+    }
+
+    /* Footer Mobile Optimization */
+    .site-footer {
+        padding: 40px 0;
+        overflow: hidden;
+        width: 100% !important;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        padding: 0 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .footer-info,
+    .footer-newsletter,
+    .footer-logo {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .footer-info p {
+        justify-content: center;
+        text-align: center;
+        line-height: 1.5;
+        word-break: break-word;
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
+
+    .footer-newsletter .input-group {
+        margin: 20px auto 0;
+        flex-direction: column;
+        height: auto;
+        background: transparent;
+        border: none;
+        gap: 12px;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .footer-newsletter .input-group input {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(248, 245, 225, 0.4) !important;
+        border-radius: 30px;
+        height: 55px;
+        /* Slightly taller for easier tapping */
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .footer-newsletter .input-group input:focus {
+        border-color: #F8F5E1 !important;
+        box-shadow: 0 0 10px rgba(248, 245, 225, 0.2);
+    }
+
+    .footer-newsletter .btn-suscribir {
+        height: 50px;
+        width: 100%;
+        border-radius: 30px;
+    }
+
+    .footer-logo {
+        order: -1;
+        margin-bottom: 0;
+    }
+
+    .logo-circle {
+        margin: 0 auto 20px;
+        width: 140px;
+        height: 140px;
+    }
+
+    .logo-circle img {
+        width: 100px;
+    }
+
+    /* Section Titles */
+    .section-title {
+        font-size: 24px;
+    }
+
+    /* Hamburguer Active State */
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+}
+
+/* Fix for large screens */
+@media (min-width: 1401px) {
+    .header-container {
+        padding: 0 50px;
+    }
+}
+
+/* Responsividad Seccion Productos */
+@media (max-width: 992px) {
+    .contenedor-productos-main {
+        flex-direction: column;
+        padding: 40px 5%;
+        gap: 40px;
+    }
+
+    .filtros-lateral {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 20px;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .filtros-lateral h2 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .categoria-filtro {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .grid-articulos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .barra-categorias-productos {
+        padding: 15px 5%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        display: flex;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
         gap: 10px;
     }
-    .btn-aplicar {
-        width: 100%;
+
+    .btn-categoria {
+        flex-shrink: 0;
+        margin-top: 0;
     }
 
-    /* 5. FOOTER */
-    footer { 
-        flex-direction: column; 
-        padding: 20px 10px; 
-        text-align: center; 
+    .titulo-seccion {
+        font-size: 2.5rem;
+        margin-top: 40px;
+        text-align: center;
+        margin-left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-    .footer-info, 
-    .footer-newsletter, 
-    .footer-logo { 
-        width: 100%; 
-        margin-bottom: 30px; 
+
+    .titulo-seccion::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
     }
-    .input-group { 
-        flex-direction: column; 
-        gap: 10px; 
+}
+
+@media (max-width: 600px) {
+    .grid-articulos {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
-    .input-group input, 
-    .input-group button { 
-        width: 100%; 
+
+    .filtros-lateral h2 {
+        font-size: 2rem;
     }
+
+    .imagen-placeholder {
+        max-width: 100%;
+    }
+}
+
+/* Boton de Cerrar Menu Movil */
+.close-menu-btn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: none;
+    border: none;
+    color: #F8F5E1;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 1005;
+    line-height: 1;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.close-menu-btn:hover {
+    color: #f2ead0;
+    transform: scale(1.1) rotate(90deg);
 }
