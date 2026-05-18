@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bizcocho de Limón | La Caja Dulce</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../img/logotab.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="site-header capsule-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="menuBtn" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-links desktop-only">
+                    <a href="../productos.html" class="boton-nav">PRODUCTOS</a>
+                    <a href="../SobreNosotros.html" class="boton-nav">SOBRE NOSOTROS</a>
+                </nav>
+            </div>
+
+            <div class="header-center">
+                <a href="../index.html" class="logo-link">
+                    <div class="logo-box">
+                        <img src="../img/LOGOSIN.png" alt="La Caja Dulce" class="main-logo">
+                    </div>
+                </a>
+            </div>
+
+            <div class="header-right">
+                <div class="header-icons">
+                    <a href="../index.html" class="icon-link">
+                        <img src="../img/home.png" alt="Inicio" class="icono">
+                    </a>
+                    <a href="../carrito.html" class="icon-link">
+                        <img src="../img/shopping-cart1.png" alt="Carrito" class="icono">
+                    </a>
+                    <a href="#" class="icon-link">
+                        <img src="../img/lupita.png" alt="Buscar" class="icono">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <button class="close-menu-btn" id="closeMenuBtn" aria-label="Cerrar menú">&times;</button>
+            <div class="mobile-nav-header">
+                <div class="logo-circle-small">
+                    <img src="../img/LOGOSIN.png" alt="Logo">
+                </div>
+            </div>
+            <nav class="mobile-links">
+                <a href="../index.html">INICIO</a>
+                <a href="../productos.html">PRODUCTOS</a>
+                <a href="../SobreNosotros.html">SOBRE NOSOTROS</a>
+                <a href="../club-del-pan.html">EL CLUB DEL PAN</a>
+                <a href="../carrito.html">MI CARRITO</a>
+            </nav>
+            <div class="mobile-nav-footer">
+                <p>La Caja Dulce</p>
+                <div class="mobile-socials">
+                    <!-- Placeholder for social icons if needed -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pagina-producto">
+        
+        <section class="producto-hero">
+            <div class="producto-imagen">
+                <img src="../img/barra-pan.png" alt="Bizcocho de Limón">
+            </div>
+
+            <div class="producto-info">
+                <h1>BIZCOCHO DE LIMÓN</h1>
+                <p class="producto-desc">
+                    UN CLÁSICO QUE NUNCA FALLA. CASERO, TIERNO Y EXTREMADAMENTE ESPONJOSO. ELABORADO CON LIMONES FRESCOS RALLADOS AL MOMENTO PARA CONSEGUIR ESE AROMA CÍTRICO INCONFUNDIBLE. CORONADO CON UN GLASEADO LIGERO QUE LE APORTA EL EQUILIBRIO PERFECTO DE DULZOR. EL ACOMPAÑANTE IDEAL PARA TU TÉ O CAFÉ.
+                </p>
+
+                <div class="opciones-compra">
+                    <label class="opcion-radio">
+                        <input type="radio" name="tipo_compra" checked>
+                        <span class="custom-radio"></span>
+                        COMPRA UNA SOLA VEZ
+                    </label>
+                    <label class="opcion-radio">
+                        <input type="radio" name="tipo_compra" onchange="window.location.href='../club-del-pan.html'">
+                        <span class="custom-radio"></span>
+                        SUSCRIPCION SEMANAL
+                    </label>
+                </div>
+
+                <div class="accion-comprar">
+                    <span class="precio">6,00€</span>
+                    <button class="btn-carrito" onclick="añadirProducto(event, 'Bizcocho de Limón', 6.00)">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="producto-info-extra">
+            <div class="info-box-marron">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" onclick="abrirPestana(event, 'tab-ingredientes')">INGREDIENTES/ALÉRGENOS</button>
+                    <button class="tab-btn" onclick="abrirPestana(event, 'tab-guardar')">CÓMO GUARDAR</button>
+                    <button class="tab-btn" onclick="abrirPestana(event, 'tab-faq')">PREGUNTAS FRECUENTES (FAQ)</button>
+                </div>
+                
+                <div id="tab-ingredientes" class="tab-content activo">
+                    <p>INGREDIENTES: HARINA DE TRIGO, AZÚCAR, HUEVOS FRESCOS, ACEITE DE OLIVA SUAVE, YOGUR NATURAL, ZUMO Y RALLADURA DE LIMÓN NATURAL, LEVADURA Y UNA PIZCA DE SAL.</p>
+                    <br>
+                    <p>ALÉRGENOS: CONTIENE GLUTEN, HUEVO Y LÁCTEOS. PUEDE CONTENER TRAZAS DE FRUTOS SECOS O SOJA (DEPENDIENDO DEL ENTORNO DE ELABORACIÓN).</p>
+                </div>
+
+                <div id="tab-guardar" class="tab-content oculto">
+                    <p>PARA QUE NO PIERDA SU ESPONJOSIDAD:</p>
+                    <br>
+                    <p>• GUÁRDALO EN UN RECIPIENTE HERMÉTICO, BAJO UNA CAMPANA DE CRISTAL O ENVUELTO EN PAPEL FILM A TEMPERATURA AMBIENTE.</p>
+                    <p>• NO LO METAS EN LA NEVERA, EL FRÍO RESECA MUCHO LA MIGA DEL BIZCOCHO.</p>
+                </div>
+
+                <div id="tab-faq" class="tab-content oculto">
+                    <p><strong>¿CUÁNTO TIEMPO AGUANTA TIERNO?</strong></p>
+                    <p>GRACIAS AL YOGUR Y AL ACEITE DE OLIVA, ESTE BIZCOCHO RETIENE MUY BIEN LA HUMEDAD Y SE MANTIENE MUY TIERNO DURANTE 4 O 5 DÍAS SI LO GUARDAS CERRADO.</p>
+                    <br>
+                    <p><strong>¿SE PUEDE CONGELAR?</strong></p>
+                    <p>SÍ, PUEDES CONGELARLO ENTERO O CORTADO EN PORCIONES. ENVUÉLVELO BIEN EN FILM TRANSPARENTE. DÉJALO DESCONGELAR A TEMPERATURA AMBIENTE ANTES DE CONSUMIR.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="productos-relacionados">
+            <h2 class="titulo-subrayado">TAMBIEN TE PODRIA GUSTAR</h2>
+            
+            <div class="carrusel-contenedor">
+                <button class="flecha-nav" style="cursor: default;">&#10229;</button>
+                
+                <div class="grid-relacionados">
+                    
+                    <a href="producto4.html" class="item-relacionado" style="text-decoration: none; color: inherit;">
+                        <div class="img-placeholder"></div>
+                        <div class="item-meta">
+                            <span class="item-nombre">COOKIE NEW YORK</span>
+                            <span class="item-precio">2,50€</span>
+                        </div>
+                    </a>
+                    
+                    <a href="producto5.html" class="item-relacionado central" style="text-decoration: none; color: inherit;">
+                        <div class="img-placeholder"></div>
+                        <div class="item-meta">
+                            <span class="item-nombre">MUFFIN ESPONJOSO</span>
+                            <span class="item-precio">2,50€</span>
+                        </div>
+                    </a>
+                    
+                    <a href="producto2.html" class="item-relacionado" style="text-decoration: none; color: inherit;">
+                        <div class="img-placeholder"></div>
+                        <div class="item-meta">
+                            <span class="item-nombre">HOGAZA SEMILLAS</span>
+                            <span class="item-precio">5,00€</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <button class="flecha-nav" style="cursor: default;">&#10230;</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>CONTACTO</h4>
+                <p><img src="../img/envelope-plus.png" alt="Email" class="footer-icon">
+                PRUEBA@GMAIL.COM</p>
+                <p><img src="../img/phone-call.png" alt="Teléfono" class="footer-icon">
+                696855416</p>
+                <p><img src="../img/land-layer-location.png" alt="Ubicación" class="footer-icon">
+                08720 VILAFRANCA DEL PENEDÈS | BARCELONA</p>
+                
+            </div>
+
+            <div class="footer-newsletter">
+                <h4>EL AROMA EMPIEZA AQUÍ.</h4>
+                <p>Déjanos tu email y consigue un 10% de descuento en tu primer mes de suscripción al Club del Pan.</p>
+                <div class="input-group">
+                    <input type="email" placeholder="ESCRIBE TU EMAIL">
+                    <button class="btn-suscribir">SUSCRIBIRSE</button>
+                </div>
+            </div>
+
+            <div class="footer-logo">
+                <div class="logo-circle">
+                    <img src="../img/LOGOSIN.png" alt="Small Logo">
+                </div>
+                <p class="copyright">&copy; 2026 LA CAJA DULCE. TODOS LOS DERECHOS RESERVADOS.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="whatsapp-contenedor">
+        <div class="whatsapp-mensaje">Pide El Mejor Pan En 1 Minuto</div>
+        <a href="https://wa.me/34694261472?text=%C2%A1Hola%20La%20Caja%20Dulce!%20%F0%9F%8D%9E%20Me%20gustar%C3%ADa%20tener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20suscripciones%20de%20El%20Club%20del%20Pan%20para%20Vilafranca.%20%C2%BFMe%20pod%C3%A9is%20ayudar%3F" class="whatsapp-flotante" target="_blank" rel="noopener noreferrer">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icono">
+        </a>
+    </div>
+
+    <script>
+        function cerrarCartita() {
+            document.getElementById('popupBienvenida').classList.add('oculto');
+        }
+
+        function mostrarAviso(mensaje) {
+            let toast = document.getElementById("toast-carrito");
+            if (!toast) {
+                toast = document.createElement("div");
+                toast.id = "toast-carrito";
+                document.body.appendChild(toast);
+            }
+            toast.innerText = mensaje;
+            toast.classList.add("mostrar");
+            setTimeout(function(){ 
+                toast.classList.remove("mostrar"); 
+            }, 3000);
+        }
+
+        function añadirProducto(event, nombreProd, precioProd) {
+            event.preventDefault(); 
+            let carrito = JSON.parse(localStorage.getItem('carritoCajaDulce')) || [];
+            let productoExistente = carrito.find(item => item.nombre === nombreProd);
+            
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
+            } else {
+                carrito.push({ nombre: nombreProd, precio: parseFloat(precioProd), cantidad: 1 });
+            }
+            localStorage.setItem('carritoCajaDulce', JSON.stringify(carrito));
+            // Emoji de limón para el bizcocho
+            mostrarAviso("🍋 ¡" + nombreProd + " añadido a tu carrito!");
+        }
+
+        function abrirPestana(evento, idPestana) {
+            let contenidos = document.querySelectorAll('.tab-content');
+            contenidos.forEach(contenido => {
+                contenido.classList.remove('activo');
+                contenido.classList.add('oculto');
+            });
+
+            let botones = document.querySelectorAll('.tab-btn');
+            botones.forEach(boton => {
+                boton.classList.remove('active');
+            });
+
+            document.getElementById(idPestana).classList.remove('oculto');
+            document.getElementById(idPestana).classList.add('activo');
+            evento.currentTarget.classList.add('active');
+        }
+        // Menú móvil toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            if (menuBtn) menuBtn.classList.toggle('active');
+            if (mobileNav) mobileNav.classList.toggle('active');
+            if (menuOverlay) menuOverlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        }
+
+        if (menuBtn && mobileNav && menuOverlay) {
+            menuBtn.addEventListener('click', toggleMenu);
+            menuOverlay.addEventListener('click', toggleMenu);
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        // Cerrar menú al volver a PC
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992 && mobileNav && mobileNav.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    </script>
+</body>
+</html>
