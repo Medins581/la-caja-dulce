@@ -1,2 +1,0 @@
-# la-caja-dulce
-bakery
