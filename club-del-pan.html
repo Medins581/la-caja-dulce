@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Club Del Pan | La Caja Dulce</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/logotab.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header capsule-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="menuBtn" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-links desktop-only">
+                    <a href="productos.html" class="boton-nav">PRODUCTOS</a>
+                    <a href="SobreNosotros.html" class="boton-nav">SOBRE NOSOTROS</a>
+                </nav>
+            </div>
+
+            <div class="header-center">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-box">
+                        <img src="img/LOGOSIN.png" alt="La Caja Dulce" class="main-logo">
+                    </div>
+                </a>
+            </div>
+
+            <div class="header-right">
+                <div class="header-icons">
+                    <a href="index.html" class="icon-link">
+                        <img src="img/home.png" alt="Inicio" class="icono">
+                    </a>
+                    <a href="carrito.html" class="icon-link">
+                        <img src="img/shopping-cart1.png" alt="Carrito" class="icono">
+                    </a>
+                    <a href="#" class="icon-link">
+                        <img src="img/lupita.png" alt="Buscar" class="icono">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <button class="close-menu-btn" id="closeMenuBtn" aria-label="Cerrar menú">&times;</button>
+            <div class="mobile-nav-header">
+                <div class="logo-circle-small">
+                    <img src="img/LOGOSIN.png" alt="Logo">
+                </div>
+            </div>
+            <nav class="mobile-links">
+                <a href="index.html">INICIO</a>
+                <a href="productos.html">PRODUCTOS</a>
+                <a href="SobreNosotros.html">SOBRE NOSOTROS</a>
+                <a href="club-del-pan.html">EL CLUB DEL PAN</a>
+                <a href="carrito.html">MI CARRITO</a>
+            </nav>
+            <div class="mobile-nav-footer">
+                <p>La Caja Dulce</p>
+                <div class="mobile-socials">
+                    <!-- Placeholder for social icons if needed -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pagina-club-pan">
+
+        <section class="intro-club">
+            <div class="banner-titulo">
+                <h1>ÚNETE A EL CLUB DEL PAN</h1>
+            </div>
+            <p class="texto-intro">
+                TU SUSCRIPCIÓN DE PAN ARTESANAL A DOMICILIO EN VILAFRANCA DEL PENEDÈS.
+                OLVÍDATE DE MADRUGAR O DE COMER PAN DE SUPERMERCADO; NOSOTROS
+                AMASAMOS, HORNEAMOS Y TE LO DEJAMOS EN LA PUERTA.
+            </p>
+        </section>
+
+        <section class="beneficios-club">
+            <h2>¿POR QUÉ UNIRTE A NUESTRO CLUB?</h2>
+            <div class="acordeon-beneficios">
+
+                <div class="item-acordeon">
+                    <button class="caja-beneficio verde" onclick="toggleAcordeon(this)">SALUD Y SABOR</button>
+                    <div class="contenido-acordeon marron-bg">
+                        <p>Volvemos a los orígenes del buen pan. Utilizamos harina de alta calidad, masa madre y un
+                            proceso de fermentación lenta de más de 24 horas. ¿El resultado? Una corteza súper crujiente
+                            y una miga llena de aromas que sabe a pan de verdad. Además, gracias a este reposo natural,
+                            nuestro pan es infinitamente más digestivo y nutritivo que el pan industrial. Adiós a la
+                            pesadez, hola al sabor.</p>
+                    </div>
+                </div>
+
+                <div class="item-acordeon">
+                    <button class="caja-beneficio marron" onclick="toggleAcordeon(this)">REPARTO CERO EMISIONES</button>
+                    <div class="contenido-acordeon verde-bg">
+                        <p>Llevamos tu pan directamente a tu puerta en bicicleta por todo Vilafranca del Penedès. Sin
+                            ruidos, sin humos y cuidando de nuestra ciudad. Un servicio local, sostenible y diseñado
+                            para que disfrutes del mejor producto recién hecho con el menor impacto ambiental posible.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="item-acordeon">
+                    <button class="caja-beneficio verde" onclick="toggleAcordeon(this)">TRANQUILIDAD TOTAL</button>
+                    <div class="contenido-acordeon marron-bg">
+                        <p>Suscríbete una vez y olvídate. Cada semana tendrás tu pan fresco esperándote para el desayuno
+                            sin tener que hacer pedidos de última hora ni bajar al supermercado. Sin compromisos de
+                            permanencia: puedes pausar o cancelar tu suscripción cuando lo necesites. Tu única
+                            preocupación será disfrutar.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="planes-club">
+            <h2>¡NUESTROS PLANES SEMANALES!</h2>
+
+            <div class="tarjeta-plan">
+                <h3>🥖 PLAN 1: "EL BÁSICO" — 8,50€ / SEMANA</h3>
+                <p>¡IDEAL PARA PAREJAS QUE CENAN EN CASA Y BUSCAN CALIDAD DIARIA!</p>
+                <p>INCLUYE: 1 HOGAZA RÚSTICA (APROX. 650G) + 2 CHAPATAS ARTESANAS DE ALTA HIDRATACIÓN.</p>
+                <p>ENTREGA: 1 DÍA A LA SEMANA.</p>
+                <div class="contenedor-btn-plan">
+                    <button class="btn-verde-plan" onclick="comprarPlan('Plan 1: El Básico', 8.50)">ELEGIR ESTE
+                        PLAN</button>
+                </div>
+            </div>
+
+            <div class="tarjeta-plan">
+                <h3>🥖 PLAN 2: "DESAYUNO DE FIN DE SEMANA" — 9,00€ / SEMANA</h3>
+                <p>¡NUESTRO PLAN ESTRELLA. EL CAPRICHO PERFECTO PARA EMPEZAR BIEN EL FINDE!</p>
+                <p>INCLUYE: 1 HOGAZA A ELEGIR (RÚSTICA O DE SEMILLAS) + 2 DULCES A ELEGIR (COOKIES NEW YORK O MUFFINS
+                    ESPONJOSOS).</p>
+                <p>ENTREGA: VIERNES O SÁBADO POR LA MAÑANA.</p>
+                <div class="contenedor-btn-plan">
+                    <button class="btn-verde-plan" onclick="comprarPlan('Plan 2: Desayuno Finde', 9.00)">ELEGIR ESTE
+                        PLAN</button>
+                </div>
+            </div>
+
+            <div class="tarjeta-plan">
+                <h3>🥖 PLAN 3: "PANADERO VIP" — 12,00€ / SEMANA</h3>
+                <p>¡PARA LAS FAMILIAS MÁS PANADERAS. PAN SIEMPRE FRESCO EN TU MESA!</p>
+                <p>INCLUYE: 2 ENTREGAS SEMANALES. (EJEMPLO: 1 HOGAZA RÚSTICA EN LA PRIMERA ENTREGA + 1 HOGAZA DE
+                    SEMILLAS EN LA SEGUNDA).</p>
+                <p>ENTREGA: MARTES Y VIERNES.</p>
+                <div class="contenedor-btn-plan">
+                    <button class="btn-verde-plan" onclick="comprarPlan('Plan 3: Panadero VIP', 12.00)">ELEGIR ESTE
+                        PLAN</button>
+                </div>
+            </div>
+
+            <div class="tarjeta-plan">
+                <h3>🥖 PLAN 4: "EL FAMILIAR" — 25,00€ / SEMANA</h3>
+                <p>¡SI ALGUIEN QUIERE MUCHA CANTIDAD, TIENE LA OPCIÓN!</p>
+                <p>QUÉ INCLUYE: 2 HOGAZAS (RÚSTICA Y SEMILLAS) + 4 CHAPATAS + 4 DULCES A ELEGIR.</p>
+                <p>ENTREGA: REPARTIDO EN 2 DÍAS (EJ. MARTES Y VIERNES) PARA QUE SIEMPRE TENGAN TODO FRESCO.</p>
+                <div class="contenedor-btn-plan">
+                    <button class="btn-verde-plan" onclick="comprarPlan('Plan 4: El Familiar', 25.00)">ELEGIR ESTE
+                        PLAN</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="logistica-faq">
+            <div class="bloque-info">
+                <h2>¿CÓMO FUNCIONA LA LOGÍSTICA?</h2>
+                <h4 class="subrayado-fino">🚲 NUESTRAS RUTAS DE REPARTO</h4>
+                <p>PARA GARANTIZAR QUE TU PAN SALE DEL HORNO DIRECTO A TU MESA, ORGANIZAMOS NUESTRAS ENTREGAS POR ZONAS
+                    DENTRO DE VILAFRANCA.</p>
+                <p>DEPENDIENDO DE TU BARRIO, TU ENTREGA SEMANAL SE PROGRAMARÁ PARA EL VIERNES A PRIMERA HORA O EL SÁBADO
+                    A PRIMERA HORA.</p>
+                <p>¡TE CONFIRMAREMOS TU DÍA EXACTO DE ENTREGA POR WHATSAPP AL HACER TU SUSCRIPCIÓN!</p>
+            </div>
+
+            <div class="bloque-info mt-extra">
+                <h2 class="verde-texto">PREGUNTAS FRECUENTES (FAQ)</h2>
+
+                <div class="pregunta-respuesta">
+                    <h4 class="verde-claro-subrayado">¿TENGO COMPROMISO DE PERMANENCIA?</h4>
+                    <p>¡PARA NADA! PUEDES PAUSAR O CANCELAR TU SUSCRIPCIÓN CUANDO QUIERAS, AVISÁNDONOS CON 48H DE
+                        ANTELACIÓN.</p>
+                </div>
+
+                <div class="pregunta-respuesta">
+                    <h4 class="verde-claro-subrayado">¿LLEGÁIS FUERA DE VILAFRANCA?</h4>
+                    <p>DE MOMENTO, PARA MANTENER EL REPARTO SOSTENIBLE EN BICICLETA Y QUE EL PAN LLEGUE CALIENTE, SOLO
+                        REPARTIMOS EN EL NÚCLEO URBANO DE VILAFRANCA DEL PENEDÈS.</p>
+                </div>
+
+                <div class="pregunta-respuesta">
+                    <h4 class="verde-claro-subrayado">¿CÓMO SE PAGA?</h4>
+                    <p>PUEDES PAGAR SEMANALMENTE O MENSUALMENTE MEDIANTE BIZUM O TRANSFERENCIA, COMO TE SEA MÁS CÓMODO.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>CONTACTO</h4>
+                <p><img src="img/envelope-plus.png" alt="Email" class="footer-icon">
+                    PRUEBA@GMAIL.COM</p>
+                <p><img src="img/phone-call.png" alt="Teléfono" class="footer-icon">
+                    696855416</p>
+                <p><img src="img/land-layer-location.png" alt="Ubicación" class="footer-icon">
+                    08720 VILAFRANCA DEL PENEDÈS | BARCELONA</p>
+
+            </div>
+
+            <div class="footer-newsletter">
+                <h4>EL AROMA EMPIEZA AQUÍ.</h4>
+                <p>Déjanos tu email y consigue un 10% de descuento en tu primer mes de suscripción al Club del Pan.</p>
+                <div class="input-group">
+                    <input type="email" placeholder="ESCRIBE TU EMAIL">
+                    <button class="btn-suscribir">SUSCRIBIRSE</button>
+                </div>
+            </div>
+
+            <div class="footer-logo">
+                <div class="logo-circle">
+                    <img src="img/LOGOSIN.png" alt="Small Logo">
+                </div>
+                <p class="copyright">&copy; 2026 LA CAJA DULCE. TODOS LOS DERECHOS RESERVADOS.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="whatsapp-contenedor">
+        <div class="whatsapp-mensaje">Pide El Mejor Pan En 1 Minuto</div>
+        <a href="https://wa.me/34694261472?text=%C2%A1Hola%20La%20Caja%20Dulce!%20%F0%9F%8D%9E%20Me%20gustar%C3%ADa%20tener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20suscripciones%20de%20El%20Club%20del%20Pan%20para%20Vilafranca.%20%C2%BFMe%20pod%C3%A9is%20ayudar%3F"
+            class="whatsapp-flotante" target="_blank" rel="noopener noreferrer">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                class="whatsapp-icono">
+        </a>
+    </div>
+
+
+    <script>
+        // 1. Función para que se abran los cuadros verde/marrón
+        function toggleAcordeon(boton) {
+            const contenidoClicado = boton.nextElementSibling;
+            const todosLosContenidos = document.querySelectorAll('.contenido-acordeon');
+            const estaAbierto = contenidoClicado.style.maxHeight;
+
+            todosLosContenidos.forEach(contenido => {
+                contenido.style.maxHeight = null;
+            });
+
+            if (!estaAbierto) {
+                contenidoClicado.style.maxHeight = contenidoClicado.scrollHeight + "px";
+            }
+        }
+
+        // 2. Función para enviar el plan al carrito y cambiar de página
+        function comprarPlan(nombrePlan, precioPlan) {
+            // Leemos la memoria
+            let carrito = JSON.parse(localStorage.getItem('carritoCajaDulce')) || [];
+
+            // Comprobamos si ya lo tenía
+            let planExistente = carrito.find(item => item.nombre === nombrePlan);
+
+            if (planExistente) {
+                planExistente.cantidad += 1;
+            } else {
+                carrito.push({ nombre: nombrePlan, precio: parseFloat(precioPlan), cantidad: 1 });
+            }
+
+            // Guardamos
+            localStorage.setItem('carritoCajaDulce', JSON.stringify(carrito));
+
+            // Saltamos a la página del carrito
+            window.location.href = 'carrito.html';
+        }
+
+        // Menú móvil toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            if (menuBtn) menuBtn.classList.toggle('active');
+            if (mobileNav) mobileNav.classList.toggle('active');
+            if (menuOverlay) menuOverlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        }
+
+        if (menuBtn && mobileNav && menuOverlay) {
+            menuBtn.addEventListener('click', toggleMenu);
+            menuOverlay.addEventListener('click', toggleMenu);
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        // Cerrar menú al volver a PC
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992 && mobileNav && mobileNav.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    </script>
+</body>
+
+</html>

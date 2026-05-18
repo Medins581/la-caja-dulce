@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | La Caja Dulce</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/logotab.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <header class="site-header capsule-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="menuBtn" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-links desktop-only">
+                    <a href="productos.html" class="boton-nav">PRODUCTOS</a>
+                    <a href="SobreNosotros.html" class="boton-nav">SOBRE NOSOTROS</a>
+                </nav>
+            </div>
+
+            <div class="header-center">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-box">
+                        <img src="img/LOGOSIN.png" alt="La Caja Dulce" class="main-logo">
+                    </div>
+                </a>
+            </div>
+
+            <div class="header-right">
+                <div class="header-icons">
+                    <a href="index.html" class="icon-link">
+                        <img src="img/home.png" alt="Inicio" class="icono">
+                    </a>
+                    <a href="carrito.html" class="icon-link">
+                        <img src="img/shopping-cart1.png" alt="Carrito" class="icono">
+                    </a>
+                    <a href="#" class="icon-link">
+                        <img src="img/lupita.png" alt="Buscar" class="icono">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <button class="close-menu-btn" id="closeMenuBtn" aria-label="Cerrar menú">&times;</button>
+            <div class="mobile-nav-header">
+                <div class="logo-circle-small">
+                    <img src="img/LOGOSIN.png" alt="Logo">
+                </div>
+            </div>
+            <nav class="mobile-links">
+                <a href="index.html">INICIO</a>
+                <a href="productos.html">PRODUCTOS</a>
+                <a href="SobreNosotros.html">SOBRE NOSOTROS</a>
+                <a href="club-del-pan.html">EL CLUB DEL PAN</a>
+                <a href="carrito.html">MI CARRITO</a>
+            </nav>
+            <div class="mobile-nav-footer">
+                <p>La Caja Dulce</p>
+                <div class="mobile-socials">
+                    <!-- Placeholder for social icons if needed -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="benefits">
+        <div class="benefit">
+            <img src="img/land-layer-location (1).png " alt="Envíos Vilafranca" class="icon-benefit">
+            <h3>ENVÍOS EN VILAFRANCA</h3>
+            <p> SOLO ENVIOS A VILAFRANCA</p>
+        </div>
+        <div class="benefit">
+            <img src="img/truck-moving.png" alt="Envío gratis" class="icon-benefit">
+            <h3>SUSCRIPCIÓN SEMANAL</h3>
+            <p>TU PAN FRESCO EN LA PUERTA DE TU CASA</p>
+        </div>
+        <div class="benefit">
+            <img src="img/newsletter-subscribe.png" alt="Descuentos" class="icon-benefit">
+            <h3>CONSIGUE DESCUENTOS</h3>
+            <p>¡CON TU SUSCRIPCIÓN A CLUB DEL PAN!</p>
+        </div>
+        <div class="benefit">
+            <img src="img/duration-alt.png" alt="Tiempo" class="icon-benefit">
+            <h3>HORNDEADO BAJO PEDIDO</h3>
+            <p>HAZ TU PEDIDO 24H ANTES</p>
+        </div>
+    </section>
+
+    <section class="como-funciona">
+        <h2 class="section-title">¿CÓMO FUNCIONA EL CLUB DEL PAN?</h2>
+        <div class="pasos-grid">
+            <div class="paso">
+                <h3>1. ELIGES TU PLAN</h3>
+                <p>1 o 2 entregas semanales de pan artesanal.</p>
+            </div>
+            <div class="paso">
+                <h3>2. HORNEAMOS PARA TI</h3>
+                <p>Con harinas de calidad y fermentación lenta.</p>
+            </div>
+            <div class="paso">
+                <h3>3. DESPIERTA CON PAN</h3>
+                <p>Te lo dejamos en la puerta de casa listo para el desayuno.</p>
+            </div>
+        </div>
+
+        <div class="contenedor-boton-centro">
+            <a href="club-del-pan.html" class="btn-marron-redondeado">¡QUIERO UNIRME AL CLUB DEL PAN!</a>
+        </div>
+    </section>
+
+
+    <h1 class="titulo-seccion">PRODUCTOS</h1>
+
+    <div class="barra-categorias-productos">
+        <button class="btn-categoria">LO MAS VENDIDO</button>
+        <button class="btn-categoria">RECIEN SALIDO</button>
+        <button class="btn-categoria">LOS CLASICOS</button>
+        <button class="btn-categoria">OFERTAS!</button>
+    </div>
+
+    <main class="contenedor-productos-main">
+        <aside class="filtros-lateral">
+            <h2>FILTRAR</h2>
+            <div class="categoria-filtro"><span>PAN</span><span class="plus">+</span></div>
+            <div class="categoria-filtro"><span>BOLLERIA</span><span class="plus">+</span></div>
+            <div class="categoria-filtro"><span>SIN AZUCAR</span><span class="plus">+</span></div>
+
+            <div class="contenedor-rango">
+                <p class="btn-precios">PRECIOS</p>
+
+                <div class="slider-wrapper">
+                    <div class="track"></div>
+                    <input type="range" min="0" max="15" value="0" class="input-range" id="min-price">
+                    <input type="range" min="0" max="15" value="15" class="input-range" id="max-price">
+                </div>
+
+                <div class="labels-precio">
+                    <span id="label-min">0€</span>
+                    <span id="label-max">15€</span>
+                </div>
+            </div>
+        </aside>
+
+        <section class="grid-articulos">
+
+            <a href="productos/producto1.html" class="tarjeta-producto-link">
+                <div class="tarjeta-producto">
+                    <div class="imagen-placeholder">
+                        <button class="btn-add-cart" onclick="añadirAlCarrito(event, 'Hogaza Rústica', 4.50)">
+                            <img src="img/shopping-cart1.png" alt="Añadir">
+                        </button>
+                    </div>
+                    <div class="info-producto"><span class="nombre">HOGAZA RÚSTICA</span><span
+                            class="precio">4,50€</span></div>
+                </div>
+            </a>
+
+            <a href="productos/producto2.html" class="tarjeta-producto-link">
+                <div class="tarjeta-producto">
+                    <div class="imagen-placeholder">
+                        <button class="btn-add-cart" onclick="añadirAlCarrito(event, 'Hogaza Semillas', 5.00)">
+                            <img src="img/shopping-cart1.png" alt="Añadir">
+                        </button>
+                    </div>
+                    <div class="info-producto"><span class="nombre">HOGAZA SEMILLAS</span><span
+                            class="precio">5,00€</span></div>
+                </div>
+            </a>
+
+            <a href="productos/producto3.html" class="tarjeta-producto-link">
+                <div class="tarjeta-producto">
+                    <div class="imagen-placeholder">
+                        <button class="btn-add-cart" onclick="añadirAlCarrito(event, 'Chapata Artesana', 2.50)">
+                            <img src="img/shopping-cart1.png" alt="Añadir">
+                        </button>
+                    </div>
+                    <div class="info-producto"><span class="nombre">CHAPATA ARTESANA</span><span
+                            class="precio">2,50€</span></div>
+                </div>
+            </a>
+
+            <a href="productos/producto4.html" class="tarjeta-producto-link">
+                <div class="tarjeta-producto">
+                    <div class="imagen-placeholder">
+                        <button class="btn-add-cart" onclick="añadirAlCarrito(event, 'Cookie Chocolate Chunk', 2.50)">
+                            <img src="img/shopping-cart1.png" alt="Añadir">
+                        </button>
+                    </div>
+                    <div class="info-producto"><span class="nombre">COOKIE NEW YORK</span><span
+                            class="precio">2,50€</span></div>
+                </div>
+            </a>
+
+            <a href="productos/producto5.html" class="tarjeta-producto-link">
+                <div class="tarjeta-producto">
+                    <div class="imagen-placeholder">
+                        <button class="btn-add-cart" onclick="añadirAlCarrito(event, 'Muffin Esponjoso', 2.50)">
+                            <img src="img/shopping-cart1.png" alt="Añadir">
+                        </button>
+                    </div>
+                    <div class="info-producto"><span class="nombre">MUFFIN ESPONJOSO</span><span
+                            class="precio">2,50€</span></div>
+                </div>
+            </a>
+
+            <a href="productos/producto6.html" class="tarjeta-producto-link">
+                <div class="tarjeta-producto">
+                    <div class="imagen-placeholder">
+                        <button class="btn-add-cart" onclick="añadirAlCarrito(event, 'Bizcocho Glaseado', 6.00)">
+                            <img src="img/shopping-cart1.png" alt="Añadir">
+                        </button>
+                    </div>
+                    <div class="info-producto"><span class="nombre">BIZCOCHO LIMÓN</span><span
+                            class="precio">6,00€</span></div>
+                </div>
+            </a>
+
+        </section>
+
+        <script>
+            // Función para mostrar el aviso bonito flotante
+            function mostrarAviso(mensaje) {
+                // Buscamos si ya existe el contenedor de avisos
+                let toast = document.getElementById("toast-carrito");
+
+                // Si no existe, lo creamos
+                if (!toast) {
+                    toast = document.createElement("div");
+                    toast.id = "toast-carrito";
+                    document.body.appendChild(toast);
+                }
+
+                // Le ponemos el texto y lo hacemos visible
+                toast.innerText = mensaje;
+                toast.classList.add("mostrar");
+
+                // Después de 3 segundos, le quitamos la clase para que desaparezca
+                setTimeout(function () {
+                    toast.classList.remove("mostrar");
+                }, 3000);
+            }
+
+            // Función para añadir desde el catálogo
+            function añadirAlCarrito(event, nombreProd, precioProd) {
+                event.preventDefault(); // Evita que la tarjeta te lleve a otra página
+
+                let carrito = JSON.parse(localStorage.getItem('carritoCajaDulce')) || [];
+                let planExistente = carrito.find(item => item.nombre === nombreProd);
+
+                if (planExistente) {
+                    planExistente.cantidad += 1;
+                } else {
+                    carrito.push({ nombre: nombreProd, precio: parseFloat(precioProd), cantidad: 1 });
+                }
+
+                localStorage.setItem('carritoCajaDulce', JSON.stringify(carrito));
+
+                // Llamamos a nuestra nueva función bonita en lugar del alert feo
+                mostrarAviso("🍞 ¡" + nombreProd + " añadido a tu carrito!");
+            }
+        </script>
+
+
+
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>CONTACTO</h4>
+                <p><img src="img/envelope-plus.png" alt="Email" class="footer-icon">
+                    PRUEBA@GMAIL.COM</p>
+                <p><img src="img/phone-call.png" alt="Teléfono" class="footer-icon">
+                    696855416</p>
+                <p><img src="img/land-layer-location.png" alt="Ubicación" class="footer-icon">
+                    08720 VILAFRANCA DEL PENEDÈS | BARCELONA</p>
+
+            </div>
+
+            <div class="footer-newsletter">
+                <h4>EL AROMA EMPIEZA AQUÍ.</h4>
+                <p>Déjanos tu email y consigue un 10% de descuento en tu primer mes de suscripción al Club del Pan.</p>
+                <div class="input-group">
+                    <input type="email" placeholder="ESCRIBE TU EMAIL">
+                    <button class="btn-suscribir">SUSCRIBIRSE</button>
+                </div>
+            </div>
+
+            <div class="footer-logo">
+                <div class="logo-circle">
+                    <img src="img/LOGOSIN.png" alt="Small Logo">
+                </div>
+                <p class="copyright">&copy; 2026 LA CAJA DULCE. TODOS LOS DERECHOS RESERVADOS.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const minInput = document.getElementById('min-price');
+        const maxInput = document.getElementById('max-price');
+        const labelMin = document.getElementById('label-min');
+        const labelMax = document.getElementById('label-max');
+
+        minInput.oninput = () => {
+            if (parseInt(minInput.value) > parseInt(maxInput.value)) {
+                minInput.value = maxInput.value;
+            }
+            labelMin.innerText = minInput.value + "€";
+        };
+
+        maxInput.oninput = () => {
+            if (parseInt(maxInput.value) < parseInt(minInput.value)) {
+                maxInput.value = minInput.value;
+            }
+            labelMax.innerText = maxInput.value + "€";
+        };
+    </script>
+
+    <div class="whatsapp-contenedor">
+        <div class="whatsapp-mensaje">Pide El Mejor Pan En 1 Minuto</div>
+        <a href="https://wa.me/34694261472?text=%C2%A1Hola%20La%20Caja%20Dulce!%20%F0%9F%8D%9E%20Me%20gustar%C3%ADa%20tener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20suscripciones%20de%20El%20Club%20del%20Pan%20para%20Vilafranca.%20%C2%BFMe%20pod%C3%A9is%20ayudar%3F"
+            class="whatsapp-flotante" target="_blank" rel="noopener noreferrer">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                class="whatsapp-icono">
+        </a>
+    </div>
+
+    <script>
+        // Función para cerrar la carta de bienvenida
+        function cerrarCartita() {
+            if (document.getElementById('popupBienvenida')) {
+                document.getElementById('popupBienvenida').classList.add('oculto');
+            }
+        }
+
+        // Menú móvil toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            if (menuBtn) menuBtn.classList.toggle('active');
+            if (mobileNav) mobileNav.classList.toggle('active');
+            if (menuOverlay) menuOverlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        }
+
+        if (menuBtn && mobileNav && menuOverlay) {
+            menuBtn.addEventListener('click', toggleMenu);
+            menuOverlay.addEventListener('click', toggleMenu);
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        // Cerrar menú al volver a PC
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992 && mobileNav && mobileNav.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    </script>
+</body>
+
+</html>
